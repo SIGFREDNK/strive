@@ -113,7 +113,7 @@ const Home: NextPage = () => {
                         color="secondary"
                         startIcon={<VpnKeyRoundedIcon />}
                     >
-                        Login
+                        Log ind
                     </Button>
                 </Form>
             </Container>
