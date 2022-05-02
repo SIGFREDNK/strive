@@ -1,0 +1,9 @@
+$primary: #fefefe;
+$text-primary: #ffffff;
+$text-secondary: #000000;
+
+:export {
+    primary: $primary;
+    textPrimary: $text-primary;
+    textSecondary: $text-secondary;
+}
