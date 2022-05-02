@@ -2,7 +2,7 @@
 import type { NextPage } from 'next';
 
 const Projects: NextPage = () => {
-    return <div className={styles.container}>Projects</div>;
+    return <div>Projects</div>;
 };
 
 export default Projects;

@@ -2,7 +2,7 @@
 import type { AppProps } from 'next/app';
 
 // GLOBAL STYLES
-import 'globals.css';
+import 'globals.scss';
 
 // MATERIAL UI
 import { ThemeProvider } from '@mui/material';
