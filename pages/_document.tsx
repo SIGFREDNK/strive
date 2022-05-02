@@ -12,7 +12,10 @@ export default function Document() {
                     content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
                 />
                 <link rel="manifest" href="/manifest.json" />
-                <meta name="msapplication-config" content="browserconfig.xml" />
+                <meta
+                    name="msapplication-config"
+                    content="/browserconfig.xml"
+                />
                 {/* ICONS */}
                 {/* apple */}
                 <link
