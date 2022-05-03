@@ -18,6 +18,10 @@ export default function Document() {
                 <link rel="shortcut icon" href="/icons/favicon.ico" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+                {/* THEME */}
+                <meta name="theme-color" content="#06323a" />
+                {/* APPLICATION NAME */}
+                <meta name="application-name" content="Strive" />
                 {/* APPLE */}
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -29,10 +33,6 @@ export default function Document() {
                 <meta name="msapplication-TileColor" content="#2d89ef" />
                 <meta name="msapplication-config" content="/browserconfig.xml" />
                 <meta name="msapplication-tap-highlight" content="no" />
-                {/* THEME */}
-                <meta name="theme-color" content="#317EFB" />
-                {/* APPLICATION NAME */}
-                <meta name="application-name" content="Strive" />
                 {/* TWITTER */}
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:url" content="https://www.mystrive.com" />

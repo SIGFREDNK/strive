@@ -42,3 +42,6 @@ yarn-error.log*
 
 # lint
 .eslintrc.json
+
+# git
+.gitignore
