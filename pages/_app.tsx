@@ -4,17 +4,22 @@ import type { AppProps } from 'next/app';
 // GLOBAL STYLES
 import 'globals.scss';
 
-// MATERIAL UI
-import { ThemeProvider } from '@mui/material';
+// FRAMER MOTION
+import { motion, AnimatePresence } from 'framer-motion';
 
-// THEME
-import theme from 'theme';
-
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
     return (
-        <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-        </ThemeProvider>
+        <AnimatePresence exitBeforeEnter initial={false}>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, type: 'linear' }}
+                key={router.route}
+            >
+                <Component {...pageProps} />
+            </motion.div>
+        </AnimatePresence>
     );
 }
 

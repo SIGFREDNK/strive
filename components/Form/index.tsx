@@ -5,9 +5,11 @@ import React from 'react';
 type props = {
     onSubmit?: (arg0?: React.FormEvent) => void;
     children?: React.ReactNode;
+    className?: string;
+    style?: React.CSSProperties;
 };
 
-const Form: React.FC<props> = ({ onSubmit, children }) => {
+const Form: React.FC<props> = ({ onSubmit, children, className, style }) => {
     return (
         <form
             onSubmit={event => {
@@ -16,6 +18,8 @@ const Form: React.FC<props> = ({ onSubmit, children }) => {
             }}
             noValidate
             autoComplete="off"
+            className={className}
+            style={style}
         >
             {children}
         </form>

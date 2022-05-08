@@ -1,0 +1,25 @@
+.other {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.other a {
+    color: #000000;
+    padding: 0.5rem 0;
+}
+
+.remember {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.remember input {
+    height: 1rem;
+    width: 1rem;
+}
+
+.remember span {
+    margin-left: 0.5rem;
+}

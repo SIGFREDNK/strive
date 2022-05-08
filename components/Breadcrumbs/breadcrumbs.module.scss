@@ -1,0 +1,23 @@
+.breadcrumbs {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
+.breadcrumbs a {
+    font-weight: 500;
+}
+
+.home {
+    display: flex;
+}
+
+.arrow {
+    color: #a4a9b1;
+    margin: 0 0.25rem;
+}
