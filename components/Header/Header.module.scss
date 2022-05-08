@@ -21,6 +21,10 @@
     transition: margin 300ms ease-in;
 }
 
+.title2 {
+    display: none;
+}
+
 .push {
     margin-left: 14rem;
 }
@@ -93,7 +97,7 @@
 .search {
     position: absolute;
     left: 0.7rem;
-    cursor: pointer
+    cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {
@@ -101,17 +105,35 @@
         display: none;
     }
     .header {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
         padding: 0 1rem;
+        justify-content: space-between;
     }
-    .hamburger {
-        margin-right: auto;
+    .header > div {
+        width: 6rem;
     }
-    .other {
-        margin-left: auto;
+    .container {
+        width: 1.75rem;
+    }
+    .container input {
+        display: none;
+    }
+    .title {
+        display: none;
+    }
+    .title2 {
+        display: flex;
     }
     .cog {
+        display: none;
+    }
+    .other {
+        justify-content: flex-start;
+        flex-direction: row-reverse;
+    }
+    .bell {
+        margin: 0;
+    }
+    .profile {
         display: none;
     }
 }

@@ -76,10 +76,12 @@ const place: (event: React.MouseEvent | React.TouchEvent) => void = event => {
     detectWhichHalfOfTargetIsClosest(
         event,
         () => {
+            console.log('Append');
             if (target?.classList.contains('droppable')) target.append(dragged);
             if (target?.classList.contains('draggable')) target.insertAdjacentElement('afterend', dragged);
         },
         () => {
+            console.log('Prepend');
             if (target?.classList.contains('droppable')) target.prepend(dragged);
             if (target?.classList.contains('draggable')) target.insertAdjacentElement('beforebegin', dragged);
         }

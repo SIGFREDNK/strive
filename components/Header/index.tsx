@@ -36,6 +36,7 @@ const Header: React.FC<props> = ({ selected, toggleNavigation, title, open }) =>
                 </button>
                 <h2 className={`${styles.title} ${open ? styles.push : ''}`}>{title}</h2>
             </div>
+            <h2 className={`${styles.title2} ${open ? styles.push : ''}`}>{title}</h2>
             <div className={styles.other}>
                 <div className={styles.container}>
                     <input type="text" className={styles.searchbar} placeholder="Search" />
