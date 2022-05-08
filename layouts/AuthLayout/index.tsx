@@ -43,7 +43,7 @@ const AuthLayout: React.FC<Props> = ({
 
     return (
         <Setup title={pageTitle} classes={styles.page}>
-            <Form onSubmit={onSubmit} classes={`${styles.entry} ${styles.login}`}>
+            <Form onSubmit={onSubmit} className={`${styles.entry} ${styles.login}`}>
                 <div className={styles.back}>
                     <Link href="/" passHref>
                         <div>
@@ -59,11 +59,7 @@ const AuthLayout: React.FC<Props> = ({
                 <span className={styles.error}></span>
                 <div className={styles.inputs}>
                     {children}
-                    <input
-                        type="submit"
-                        value={primary}
-                        onKeyDown={event => submitOnEnter(event.key)}
-                    />
+                    <input type="submit" value={primary} onKeyDown={event => submitOnEnter(event.key)} />
                     <span className={styles.or}>Do you already have an account?</span>
                     <div className={styles.secondary}>
                         <Link href={secondaryPath}>{secondary}</Link>
