@@ -20,7 +20,9 @@ type Slide = number | null;
 // HELPERS
 import mediaQuery from 'helpers/mediaQuery';
 
+// HOOKS
 import useWidth from 'hooks/useWidth';
+import useKeyPress from 'hooks/useKeyPress';
 
 const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, breakpoints }) => {
     const [currentOffset, setCurrentOffset] = useState(0); // this stores the offset while swiping
@@ -29,15 +31,31 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
     const [mousePressed, setMousePressed] = useState(false); // true = mouse is pressed on swiper | false = mouse is not pressed on swiper
     const childCount = Children.count(children); // is equal to the number of children of the swiper
     const [slides, setSlides] = useState<Slide>(null);
+
     const width = useWidth();
+    const arrowLeftPressed = useKeyPress('ArrowLeft');
+    const arrowRightPressed = useKeyPress('ArrowRight');
 
     useEffect(() => {
         if (breakpoints) {
-            console.log(mediaQuery(window.innerWidth, breakpoints, slidesOnDisplay));
             setSlides(mediaQuery(window.innerWidth, breakpoints, slidesOnDisplay));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [breakpoints, slidesOnDisplay]);
+
+    useEffect(() => {
+        if (arrowLeftPressed) {
+            setCurrentOffset(prevValue => prevValue + 20);
+            console.log('arrowLeftPressed');
+        }
+    }, [arrowLeftPressed]);
+
+    useEffect(() => {
+        if (arrowRightPressed) {
+            setCurrentOffset(prevValue => prevValue - 20);
+            console.log('arrowRightPressed');
+        }
+    }, [arrowRightPressed]);
 
     let moveX: number; // stores the current x position of the cursor/touch
 
@@ -78,6 +96,9 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
     };
 
     const touchStart: (event: React.TouchEvent) => void = event => {
+        const target = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+        if (target?.classList.contains('swiper-disabled')) return;
+
         setStartX(event.touches[0].clientX); // store the initial x position of the touch
     };
 
@@ -91,6 +112,9 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
     };
 
     const dragStart: (event: React.MouseEvent) => void = event => {
+        const target = document.elementFromPoint(event.clientX, event.clientY);
+        if (target?.classList.contains('swiper-disabled')) return;
+
         setMousePressed(true); // is true when the mouse is pressed on the swiper otherwise its false
         setStartX(event.pageX); // store the initial x position of the mouse
     };

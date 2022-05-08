@@ -6,3 +6,8 @@
 .title {
     margin-bottom: 0.5rem;
 }
+
+.droppable {
+    display: flex;
+    flex-direction: column;
+}

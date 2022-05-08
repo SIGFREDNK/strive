@@ -21,3 +21,5 @@ export const navItems: NavItem[] = [
 export const applicationName = 'Strive';
 
 export const applicationDescription = 'Track your progress - Achieve your goals';
+
+export const dragAndDrop = { enableDrag: false, enableMouse: true, enableTouch: true };

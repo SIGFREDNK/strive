@@ -44,14 +44,18 @@ button {
     opacity: 0.4;
 }
 
+.draggable.inactive * {
+    pointer-events: none;
+}
+
 .draggable.dragover > div {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     border: 1px solid gold;
 }
 
-.droppable.dragover {
-    border: dashed 3px red;
-}
+// .droppable.dragover {
+
+// }
 
 .before {
     border-top: 3px solid rgba(108, 122, 137, 0.5);

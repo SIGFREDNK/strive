@@ -1,7 +1,13 @@
 // REACT
-import React from 'react';
+import React, { useContext } from 'react';
 
 // TYPES
+interface DragContextType {
+    enableDrag: boolean;
+    enableMouse: boolean;
+    enableTouch: boolean;
+}
+
 type Props = {
     children: React.ReactNode;
     style?: React.CSSProperties;
@@ -12,15 +18,32 @@ type Props = {
 import styles from './droppable.module.scss';
 
 // HELPERS
-import { dragEnter, dragOver, dragLeave, drop } from 'helpers/drag';
+import { dragEnter, dragOver, dragLeave, drop, place } from 'helpers/drag-and-drop';
+
+// CONFIG
+import { dragAndDrop } from 'config';
 
 const Droppable: React.FC<Props> = ({ children, style, className }) => {
     return (
         <div
-            onDragEnter={event => dragEnter(event)}
-            onDragOver={event => dragOver(event)}
-            onDragLeave={event => dragLeave(event)}
-            onDrop={event => drop(event, 'DROPPABLE')}
+            onDragEnter={event => {
+                dragAndDrop.enableDrag ? dragEnter(event) : null;
+            }}
+            onDragOver={event => {
+                dragAndDrop.enableDrag ? dragOver(event) : null;
+            }}
+            onDragLeave={event => {
+                dragAndDrop.enableDrag ? dragLeave(event) : null;
+            }}
+            onDrop={event => {
+                dragAndDrop.enableDrag ? drop(event, 'DROPPABLE') : null;
+            }}
+            onTouchEnd={event => {
+                dragAndDrop.enableTouch ? place(event) : null;
+            }}
+            onMouseUp={event => {
+                dragAndDrop.enableTouch ? place(event) : null;
+            }}
             className={`${styles.droppable} ${className} droppable`}
             style={style}
         >

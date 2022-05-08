@@ -9,35 +9,41 @@ import styles from './draggable.module.scss';
 
 // HELPERS
 import uid from 'helpers/uid';
-import { dragStart, dragEnd, dragEnter, dragLeave, dragOver, drop } from 'helpers/drag';
+import { dragStart, dragEnd, dragEnter, dragLeave, dragOver, drop, pickup } from 'helpers/drag-and-drop';
+
+// CONFIG
+import { dragAndDrop } from 'config';
 
 const Draggable: React.FC<Props> = ({ children, className, style, id }) => {
     return (
         <div
-            onDragStart={event => dragStart(event)}
-            onDragEnd={event => dragEnd(event)}
-            onDragEnter={event => dragEnter(event)}
-            onDragLeave={event => dragLeave(event)}
-            onDragOver={event => dragOver(event)}
-            onDrop={event => drop(event, 'DRAGGABLE')}
+            onDragStart={event => {
+                dragAndDrop.enableDrag ? dragStart(event) : null;
+            }}
+            onDragEnd={event => {
+                dragAndDrop.enableDrag ? dragEnd(event) : null;
+            }}
+            onDragEnter={event => {
+                dragAndDrop.enableDrag ? dragEnter(event) : null;
+            }}
+            onDragLeave={event => {
+                dragAndDrop.enableDrag ? dragLeave(event) : null;
+            }}
+            onDragOver={event => {
+                dragAndDrop.enableDrag ? dragOver(event) : null;
+            }}
+            onDrop={event => {
+                dragAndDrop.enableDrag ? drop(event, 'DRAGGABLE') : null;
+            }}
             onTouchStart={event => {
-                event.currentTarget.style.width = `${event.currentTarget.getBoundingClientRect().width}px`;
+                dragAndDrop.enableTouch ? pickup(event) : null;
             }}
-            onTouchMove={event => {
-                event.currentTarget.style.position = 'fixed';
-                event.currentTarget.style.left = `${
-                    event.touches[0].clientX - event.currentTarget.getBoundingClientRect().width / 2
-                }px`;
-                event.currentTarget.style.top = `${
-                    event.touches[0].clientY - event.currentTarget.getBoundingClientRect().height / 2
-                }px`;
-            }}
-            onTouchEnd={event => {
-                console.log(event.currentTarget);
+            onMouseDown={event => {
+                dragAndDrop.enableMouse ? pickup(event) : null;
             }}
             className={`${styles.draggable} ${className} draggable`}
             style={style}
-            draggable
+            draggable={dragAndDrop.enableDrag}
             id={id ? id : uid()}
         >
             {children}
