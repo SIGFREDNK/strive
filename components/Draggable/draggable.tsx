@@ -32,7 +32,9 @@ const Draggable: React.FC<Props> = ({ children, className, style, id }) => {
                     event.touches[0].clientY - event.currentTarget.getBoundingClientRect().height / 2
                 }px`;
             }}
-            onTouchEnd={event => {}}
+            onTouchEnd={event => {
+                console.log(event.currentTarget);
+            }}
             className={`${styles.draggable} ${className} draggable`}
             style={style}
             draggable

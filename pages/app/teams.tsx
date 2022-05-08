@@ -60,7 +60,7 @@ const Teams: NextPage = () => {
                     </ListItem>
                 </Draggable>
             </Droppable>
-            <Droppable style={{ display: 'grid', alignContent: 'baseline' }}>
+            {/* <Droppable style={{ display: 'grid', alignContent: 'baseline' }}>
                 <Draggable>
                     <ListItem>
                         <span>Project 1</span>
@@ -81,7 +81,7 @@ const Teams: NextPage = () => {
                         <span>Project 4</span>
                     </ListItem>
                 </Draggable>
-            </Droppable>
+            </Droppable> */}
         </div>
     );
 };
