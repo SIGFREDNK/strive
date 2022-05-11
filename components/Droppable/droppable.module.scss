@@ -2,5 +2,8 @@
     display: flex;
     width: 100%;
     height: fit-content;
+    padding: 0.5rem 0;
+    min-height: 3rem;
     border: solid 3px transparent;
+    cursor: grab;
 }

@@ -41,7 +41,6 @@ button {
 
 .dragging {
     cursor: grabbing;
-    opacity: 0.4;
 }
 
 .draggable.inactive * {
@@ -53,9 +52,8 @@ button {
     border: 1px solid gold;
 }
 
-// .droppable.dragover {
-
-// }
+.droppable.dragover {
+}
 
 .before {
     border-top: 3px solid rgba(108, 122, 137, 0.5);

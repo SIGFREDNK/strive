@@ -1,9 +1,20 @@
 .swiper {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: scroll;
+    // scroll-snap-type: inline mandatory;
     position: relative;
     cursor: move;
+    cursor: grab;
+}
+
+.swiper::-webkit-scrollbar {
+    display: none;
+}
+
+.example {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .slider {
@@ -11,4 +22,5 @@
     height: 100%;
     display: flex;
     flex-direction: row;
+    cursor: grab;
 }

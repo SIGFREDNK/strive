@@ -1,4 +1,5 @@
 export default interface Breakpoint {
-    slidesOnDisplay: number;
     width: number;
+    slidesOnDisplay: number;
+    nextSlideValue?: number;
 }
