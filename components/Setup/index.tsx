@@ -23,10 +23,7 @@ const Setup: React.FC<Props> = ({ title, style, background, children, classes })
                 <title>{title}</title>
                 <meta name="description" content="Track your progress - Achieve your goals!" />
                 <meta name="keywords" content="Planning Productivity" />
-                <meta
-                    name="viewport"
-                    content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5"
-                />
+                <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5" />
             </Head>
             <main className={`${styles.root} ${classes}`} style={{ ...style, background }}>
                 {children}

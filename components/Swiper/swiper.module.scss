@@ -2,10 +2,13 @@
     width: 100%;
     height: 100%;
     overflow-x: scroll;
-    // scroll-snap-type: inline mandatory;
     position: relative;
     cursor: move;
     cursor: grab;
+}
+
+.snap {
+    scroll-snap-type: inline mandatory;
 }
 
 .swiper::-webkit-scrollbar {

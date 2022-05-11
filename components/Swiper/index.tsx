@@ -27,11 +27,19 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
     const slideCount: number = useBreakpoints(slidesOnDisplay, breakpoints!);
     const arrowLeftPressed = useKeyPress('ArrowLeft');
     const arrowRightPressed = useKeyPress('ArrowRight');
-    const [currentSlide, setCurrentSlide] = useState<number>(0);
+    const [isTouch, setIsTouch] = useState(false);
 
     let swiper = new (SwiperLogic as any)(slidesOnDisplay);
 
     console.log('RENDER');
+
+    useEffect(() => {
+        const handleChange: (event: MediaQueryListEvent) => void = event => setIsTouch(mediaQuery.matches);
+
+        const mediaQuery = window.matchMedia('(pointer: coarse)');
+        setIsTouch(mediaQuery.matches);
+        mediaQuery.addEventListener('change', handleChange);
+    }, []);
 
     useEffect(() => {
         if (arrowLeftPressed) {
@@ -49,7 +57,7 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
         <>
             {slideCount && (
                 <div
-                    className={`${styles.swiper} ${className} swiper`}
+                    className={`${styles.swiper} ${className} swiper ${isTouch ? styles.snap : ''}`}
                     style={style}
                     onMouseDown={event => swiper.start(event)}
                     onMouseMove={event => swiper.use(event)}
