@@ -9,7 +9,7 @@ import SwiperSlide from 'components/SwiperSlide';
 import Section from 'components/Section';
 import DragContext from 'components/DragContext';
 import Droppable from 'components/Droppable';
-import Draggable from 'components/Draggable/draggable';
+import Draggable from 'components/Draggable';
 
 // STYLES
 import styles from 'styles/today.module.scss';
@@ -30,17 +30,17 @@ const Schedule: NextPage = () => {
                             <Section>
                                 <h4 className={styles.title}>Today</h4>
                                 <Droppable className={`${styles.droppable} swiper-disabled`}>
-                                    <Draggable className="swiper-disabled" id="1">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Today 1</span>
                                         </ListItem>
                                     </Draggable>
-                                    <Draggable className="swiper-disabled" id="2">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Today 2</span>
                                         </ListItem>
                                     </Draggable>
-                                    <Draggable className="swiper-disabled" id="3">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Today 3</span>
                                         </ListItem>
@@ -52,17 +52,17 @@ const Schedule: NextPage = () => {
                             <Section>
                                 <h4 className={styles.title}>Tomorrow</h4>
                                 <Droppable className={`${styles.droppable} swiper-disabled`}>
-                                    <Draggable className="swiper-disabled" id="4">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Tomorrow 1</span>
                                         </ListItem>
                                     </Draggable>
-                                    <Draggable className="swiper-disabled" id="5">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Tomorrow 2</span>
                                         </ListItem>
                                     </Draggable>
-                                    <Draggable className="swiper-disabled" id="6">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Tomorrow 3</span>
                                         </ListItem>
@@ -74,17 +74,17 @@ const Schedule: NextPage = () => {
                             <Section>
                                 <h4 className={styles.title}>Habits</h4>
                                 <Droppable className={`${styles.droppable} swiper-disabled`}>
-                                    <Draggable className="swiper-disabled" id="7">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Habits 1</span>
                                         </ListItem>
                                     </Draggable>
-                                    <Draggable className="swiper-disabled" id="8">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Habits 2</span>
                                         </ListItem>
                                     </Draggable>
-                                    <Draggable className="swiper-disabled" id="9">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Habits 3</span>
                                         </ListItem>
@@ -96,17 +96,17 @@ const Schedule: NextPage = () => {
                             <Section>
                                 <h4 className={styles.title}>Completed</h4>
                                 <Droppable className={`${styles.droppable} swiper-disabled`}>
-                                    <Draggable className="swiper-disabled" id="10">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Completed 1</span>
                                         </ListItem>
                                     </Draggable>
-                                    <Draggable className="swiper-disabled" id="11">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Completed 2</span>
                                         </ListItem>
                                     </Draggable>
-                                    <Draggable className="swiper-disabled" id="12">
+                                    <Draggable className="swiper-disabled">
                                         <ListItem>
                                             <span>Completed 3</span>
                                         </ListItem>

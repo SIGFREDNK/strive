@@ -1,5 +1,5 @@
 // REACT
-import React, { Children, useState, useEffect, useRef } from 'react';
+import React, { Children, useEffect, useRef } from 'react';
 
 // STYLES
 import styles from './swiper.module.scss';
@@ -44,59 +44,62 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
     // OTHER
     const childCount: number = Children.count(children);
 
-    const setPage: (pageNumber: number) => void = pageNumber => {
+    const setPage: (pageNumber: number, behavior: 'auto' | 'smooth') => void = (pageNumber, behavior) => {
+        slideWidth.current = swiper.current!.clientWidth / slideCount;
+
         page.current = pageNumber;
+
         currentOffset.current = -(slideWidth.current * page.current);
-        if (swiper.current) swiper.current.style.scrollBehavior = 'smooth';
-        if (swiper.current) swiper.current.scrollLeft = -currentOffset.current;
+
+        swiper.current!.scroll({ left: -currentOffset.current, behavior });
+
         prevOffset.current = currentOffset.current;
-        setTimeout(() => {
-            if (swiper.current) swiper.current.style.scrollBehavior = 'auto';
-        }, 10);
     };
 
     const move: (event: React.MouseEvent) => void = event => {
-        let offset = moveX - fingerStartingXPosition + prevOffset.current;
-        event.currentTarget.scrollLeft = -offset;
-        currentOffset.current = offset;
+        currentOffset.current = moveX - fingerStartingXPosition + prevOffset.current;
+        if (swiper.current) swiper.current.scrollLeft = -currentOffset.current;
     };
 
     const start: (event: React.MouseEvent) => void = event => {
-        slideWidth.current = swiper.current!.clientWidth / slidesOnDisplay;
-        const target = document.elementFromPoint(event.nativeEvent.clientX, event.nativeEvent.clientY);
+        const target = document.elementFromPoint(event.clientX, event.clientY);
         if (target?.classList.contains('swiper-disabled')) return;
         mousePressed = true;
-        fingerStartingXPosition = event.nativeEvent.clientX;
+        fingerStartingXPosition = event.clientX;
     };
 
     const use: (event: React.MouseEvent) => void = event => {
         if (!mousePressed) return;
-        moveX = event.nativeEvent.pageX;
+        moveX = event.pageX;
         move(event);
     };
 
     const stop: (event: React.MouseEvent) => void = event => {
-        setPage(Math.round((currentOffset.current / slideWidth.current) * -1));
+        slideWidth.current = swiper.current!.clientWidth / slideCount;
+        setPage(Math.round((currentOffset.current / slideWidth.current) * -1), 'smooth');
+
         mousePressed = false;
+        moveX = 0;
+        fingerStartingXPosition = 0;
     };
 
     useEffect(() => {
         if (!arrowLeftPressed) return;
         if (page.current === 0) return;
 
-        slideWidth.current = swiper.current!.clientWidth / slidesOnDisplay;
-
-        setPage(page.current - 1);
-    }, [arrowLeftPressed, page, slidesOnDisplay]);
+        setPage(page.current - 1, 'auto');
+    }, [arrowLeftPressed]); // eslint-disable-line
 
     useEffect(() => {
         if (!arrowRightPressed) return;
-        if (page.current >= childCount - slidesOnDisplay) return;
+        if (page.current >= childCount - slideCount) return;
 
-        slideWidth.current = swiper.current!.clientWidth / slidesOnDisplay;
+        setPage(page.current + 1, 'auto');
+    }, [arrowRightPressed]); // eslint-disable-line
 
-        setPage(page.current + 1);
-    }, [arrowRightPressed, childCount, page, slideWidth, slidesOnDisplay]);
+    useEffect(() => {
+        setPage(0, 'auto');
+    }, [isTouch]); // eslint-disable-line
 
     return (
         <>
@@ -104,9 +107,9 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
                 <div
                     className={`${styles.swiper} ${className} swiper ${isTouch ? styles.snap : ''}`}
                     style={style}
-                    onMouseDown={event => start(event)}
-                    onMouseMove={event => use(event)}
-                    onMouseUp={event => stop(event)}
+                    onMouseDown={start}
+                    onMouseMove={use}
+                    onMouseUp={stop}
                     ref={swiper}
                 >
                     <div
