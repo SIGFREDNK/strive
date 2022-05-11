@@ -1,6 +1,7 @@
 .draggable {
     cursor: grab;
     padding: 0.5rem 0;
+    touch-action: none;
 }
 
 .hide {
