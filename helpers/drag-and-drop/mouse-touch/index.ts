@@ -16,6 +16,7 @@ let dragged: any;
 
 const pickup: (event: React.MouseEvent | React.TouchEvent) => void = event => {
     if (event instanceof TouchEvent) event.preventDefault();
+
     dragged = event.currentTarget; // store the draggable the user is dragging
 
     dragged.classList.add('dragging'); // add class dragging to draggable the user is dragging for styling
