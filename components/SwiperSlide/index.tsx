@@ -9,7 +9,7 @@ type Props = {
 };
 
 // STYLES
-import styles from './swiperslide.module.scss';
+import styles from './Swiperslide.module.scss';
 
 const SwiperSlide: React.FC<Props> = ({ children, style, className }) => {
     return (

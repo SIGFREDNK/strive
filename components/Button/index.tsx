@@ -29,7 +29,7 @@ type Props = CommonProps & TypeProps & TextProps;
 import { motion } from 'framer-motion';
 
 // STYLES
-import styles from './button.module.scss';
+import styles from './Button.module.scss';
 
 const Button: React.FC<Props> = ({
     text,

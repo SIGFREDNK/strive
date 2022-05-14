@@ -23,7 +23,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 // STYLES
-import styles from './input.module.scss';
+import styles from './Input.module.scss';
 
 const Input: React.FC<Props> = ({ onChange, type, label, name, placeholder, required, toggleVisibility, children }) => {
     const [visible, setVisible] = useState(false);

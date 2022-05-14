@@ -10,7 +10,7 @@ type Props = {
 };
 
 // STYLES
-import styles from './actiongroup.module.scss';
+import styles from './Actiongroup.module.scss';
 
 const ActionGroup: React.FC<Props> = ({ children, className, style, backgroundColor }) => {
     return (

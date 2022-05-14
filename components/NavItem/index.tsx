@@ -5,7 +5,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 
 // STYLES
-import styles from './navitem.module.scss';
+import styles from './Navitem.module.scss';
 
 // TYPES
 type Props = {

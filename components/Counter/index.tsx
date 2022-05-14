@@ -7,7 +7,7 @@ type Props = {
 };
 
 // STYLES
-import styles from './counter.module.scss';
+import styles from './Counter.module.scss';
 
 const Counter: React.FC<Props> = ({ defaultValue }) => {
     const [count, setCount] = useState(defaultValue);

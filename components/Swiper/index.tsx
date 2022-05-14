@@ -2,7 +2,7 @@
 import React, { Children, useEffect, useRef, useState } from 'react';
 
 // STYLES
-import styles from './swiper.module.scss';
+import styles from './Swiper.module.scss';
 
 // TYPES
 import Breakpoint from 'interfaces/Breakpoint';

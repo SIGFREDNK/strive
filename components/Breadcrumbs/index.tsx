@@ -9,7 +9,7 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 
 // STYLES
-import styles from './breadcrumbs.module.scss';
+import styles from './Breadcrumbs.module.scss';
 
 const Breadcrumbs: React.FC = () => {
     return (

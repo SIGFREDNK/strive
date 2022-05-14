@@ -2,7 +2,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 
 // STYLES
-import styles from './navigation.module.scss';
+import styles from './Navigation.module.scss';
 
 // TYPES
 type Props = {

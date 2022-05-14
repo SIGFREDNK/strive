@@ -10,7 +10,7 @@ type Props = {
 };
 
 // STYLES
-import styles from './draggable.module.scss';
+import styles from './Draggable.module.scss';
 
 // HELPERS
 import uid from 'helpers/uid';

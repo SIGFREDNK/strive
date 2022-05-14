@@ -10,10 +10,10 @@ interface Props extends PropsWithChildren<any> {
 }
 
 // STYLES
-import styles from './dragcontext.module.scss';
+import styles from './Dragcontext.module.scss';
 
 // HELPERS
-import { dragEnd, move, place } from 'helpers/drag-and-drop';
+import { move, place } from 'helpers/drag-and-drop';
 
 // CONFIG
 import { dragAndDrop } from 'config';

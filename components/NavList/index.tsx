@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 
 // STYLES
-import styles from './navlist.module.scss';
+import styles from './Navlist.module.scss';
 
 // TYPES
 type Props = {

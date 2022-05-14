@@ -15,7 +15,7 @@ import ArrowIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import { OpenContext } from 'components/Navigation';
 
 // STYLES
-import styles from './profile.module.scss';
+import styles from './Profile.module.scss';
 
 const Profile: React.FC<Props> = ({ name, tag, onClick }) => {
     const icon = useRef<HTMLDivElement>(null);

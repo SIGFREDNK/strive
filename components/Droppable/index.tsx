@@ -15,7 +15,7 @@ type Props = {
 };
 
 // STYLES
-import styles from './droppable.module.scss';
+import styles from './Droppable.module.scss';
 
 // HELPERS
 import { dragEnter, dragOver, dragLeave, drop, place } from 'helpers/drag-and-drop';

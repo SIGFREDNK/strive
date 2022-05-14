@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 // STYLES
-import styles from './header.module.scss';
+import styles from './Header.module.scss';
 
 // MATERIAL UI
 import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
