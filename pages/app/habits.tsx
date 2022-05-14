@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 import AppLayout from 'layouts/AppLayout';
 
 // STYLES
-import 'styles/app/habits.module.scss';
+import 'styles/app/Habits.module.scss';
 
 const Habits: NextPage = () => {
     return (

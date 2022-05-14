@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 import AppLayout from 'layouts/AppLayout';
 
 // STYLES
-import 'styles/app/my-day.module.scss';
+import 'styles/app/Today.module.scss';
 
 const MyDay: NextPage = () => {
     return (

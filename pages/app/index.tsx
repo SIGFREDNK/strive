@@ -17,7 +17,7 @@ import TeamsIcon from '@mui/icons-material/WorkspacesRounded';
 import ArrowIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
 // STYLES
-import styles from 'styles/app/home.module.scss';
+import styles from 'styles/app/Home.module.scss';
 
 const Home: NextPage = () => {
     return (

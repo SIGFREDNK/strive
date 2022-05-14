@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 import AppLayout from 'layouts/AppLayout';
 
 // STYLES
-import 'styles/app/skills.module.scss';
+import 'styles/app/Skills.module.scss';
 
 const Skills: NextPage = () => {
     return (

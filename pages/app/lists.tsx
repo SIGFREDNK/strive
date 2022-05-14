@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 import AppLayout from 'layouts/AppLayout';
 
 // STYLES
-import 'styles/app/lists.module.scss';
+import 'styles/app/Lists.module.scss';
 
 const Lists: NextPage = () => {
     return (

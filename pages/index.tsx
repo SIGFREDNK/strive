@@ -8,7 +8,7 @@ import Button from 'components/Button';
 import Typography from 'components/Typography';
 
 // STYLES
-import styles from 'styles/index.module.scss';
+import styles from 'styles/Index.module.scss';
 
 const Index: NextPage = () => {
     return (

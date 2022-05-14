@@ -30,6 +30,7 @@ const Header: React.FC<Props> = ({ open, title }) => {
                         event.preventDefault();
                         router.back();
                     }}
+                    aria-label="Back"
                 >
                     <BackIcon />
                 </button>
