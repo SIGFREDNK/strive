@@ -3,7 +3,7 @@
     "background_color": "#06323a",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/app/today",
+    "start_url": "/app",
     "name": "Strive",
     "short_name": "Strive",
     "description": "Track your progress - Achieve your goals",
