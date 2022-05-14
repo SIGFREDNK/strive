@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 import AppLayout from 'layouts/AppLayout';
 
 // STYLES
-import 'styles/app/Teams.module.scss';
+import 'styles/Teams.module.scss';
 
 const Teams: NextPage = () => {
     return (

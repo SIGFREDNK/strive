@@ -14,7 +14,7 @@ import Droppable from 'components/Droppable';
 import Draggable from 'components/Draggable';
 
 // STYLES
-import styles from 'styles/app/Schedule.module.scss';
+import styles from 'styles/Schedule.module.scss';
 
 const Schedule: NextPage = () => {
     const slideCounter = useRef(3);

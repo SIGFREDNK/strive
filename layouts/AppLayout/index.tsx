@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 // TYPES
 type Selected =
     | 'HOME'
-    | 'MY_DAY'
+    | 'TODAY'
     | 'SCHEDULE'
     | 'DIARY'
     | 'FRIENDS'
@@ -65,9 +65,9 @@ const AppLayout: React.FC<Props> = ({ title, selected, children }) => {
                     <NavItem
                         icon={<MyDayIcon />}
                         title="My Day"
-                        path="/app/my-day"
+                        path="/app/today"
                         action={<Counter defaultValue={1} />}
-                        selected={selected === 'MY_DAY' ? true : false}
+                        selected={selected === 'TODAY' ? true : false}
                     />
                     <NavItem
                         icon={<ScheduleIcon />}

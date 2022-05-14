@@ -16,7 +16,7 @@ import AuthLayout from 'layouts/AuthLayout';
 import { login } from 'helpers/api';
 
 // STYLES
-import styles from 'styles/auth/Login.module.scss';
+import styles from 'styles/Login.module.scss';
 
 const Login: NextPage = () => {
     const [email, setEmail] = useState('');

@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 import AppLayout from 'layouts/AppLayout';
 
 // STYLES
-import 'styles/app/Friends.module.scss';
+import 'styles/Friends.module.scss';
 
 const Friends: NextPage = () => {
     return (
