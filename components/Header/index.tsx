@@ -1,56 +1,48 @@
+// NEXT JS
+import { useRouter } from 'next/router';
+
 // REACT
 import React from 'react';
-import { useState } from 'react';
-
-// NEXT
-import Link from 'next/link';
-import Image from 'next/image';
 
 // STYLES
-import styles from './Header.module.scss';
+import styles from './header.module.scss';
 
 // MATERIAL UI
 import NotificationsIcon from '@mui/icons-material/NotificationsOutlined';
 import SettingsIcon from '@mui/icons-material/SettingsOutlined';
-import WidgetsIcon from '@mui/icons-material/Widgets';
+import BackIcon from '@mui/icons-material/ArrowCircleLeftRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
-// CONFIG
-import { navItems } from 'config';
-
 // TYPES
-type props = {
-    selected: number;
-    toggleNavigation: (navState: boolean) => void;
-    title: string;
+type Props = {
     open: boolean;
+    title: string;
 };
 
-const Header: React.FC<props> = ({ selected, toggleNavigation, title, open }) => {
-    const [profile, setProfile] = useState(null);
+const Header: React.FC<Props> = ({ open, title }) => {
+    const router = useRouter();
+
     return (
-        <header className={styles.header}>
-            <div className={styles.left}>
-                <button className={styles.hamburger} onClick={() => toggleNavigation(true)}>
-                    <WidgetsIcon />
+        <header className={`${styles.header} ${open ? styles.open : styles.closed}`}>
+            <div className={styles.widget}>
+                <button
+                    onClick={event => {
+                        event.preventDefault();
+                        router.back();
+                    }}
+                >
+                    <BackIcon />
                 </button>
-                <h2 className={`${styles.title} ${open ? styles.push : ''}`}>{title}</h2>
+                <SettingsIcon className={styles.cog} />
             </div>
-            <h2 className={`${styles.title2} ${open ? styles.push : ''}`}>{title}</h2>
-            <div className={styles.other}>
-                <div className={styles.container}>
-                    <input type="text" className={styles.searchbar} placeholder="Search" />
-                    <SearchRoundedIcon className={styles.search} />
-                </div>
-                <button className={styles.bell}>
+            <h2 className={styles.title}>{title}</h2>
+            <div className={styles.cta}>
+                <SearchRoundedIcon />
+                <div className={styles.bell}>
                     <NotificationsIcon />
-                </button>
-                <button className={styles.cog}>
-                    <SettingsIcon />
-                </button>
-                <div className={styles.profile}>
-                    <Image src="/profile.png" layout="fill" alt="" />
+                    <span className={styles.counter}>0</span>
                 </div>
+                <SettingsIcon className={styles.cog} />
             </div>
         </header>
     );

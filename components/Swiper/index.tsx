@@ -1,5 +1,5 @@
 // REACT
-import React, { Children, useEffect, useRef } from 'react';
+import React, { Children, useEffect, useRef, useState } from 'react';
 
 // STYLES
 import styles from './swiper.module.scss';
@@ -13,14 +13,29 @@ type Props = {
     style?: object;
     className?: string;
     breakpoints?: Breakpoint[];
+    onSwipe?: (pageNumber: number) => any;
+    onChange?: (slideCount: number, boundingBox: DOMRect) => any;
+    page?: number;
+    updatePage?: number;
 };
 
 // HOOKS
 import useKeyPress from 'hooks/useKeyPress';
 import useBreakpoints from 'hooks/useBreakpoints';
 import useTouchDevice from 'hooks/useTouchDevice';
+import useWidth from 'hooks/useWidth';
 
-const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, breakpoints }) => {
+const Swiper: React.FC<Props> = ({
+    children,
+    slidesOnDisplay,
+    style,
+    className,
+    breakpoints,
+    onSwipe,
+    onChange,
+    page,
+    updatePage
+}) => {
     // DOM ELEMENTS
     const swiper = useRef<HTMLDivElement>(null);
 
@@ -29,9 +44,10 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
     const arrowLeftPressed = useKeyPress('ArrowLeft');
     const arrowRightPressed = useKeyPress('ArrowRight');
     const isTouch = useTouchDevice();
+    const width = useWidth();
 
     // REFS
-    const page = useRef(0);
+    const [currentPage, setCurrentPage] = useState(page!);
     const prevOffset = useRef(0);
     const currentOffset = useRef(0);
     const slideWidth = useRef(0);
@@ -44,16 +60,19 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
     // OTHER
     const childCount: number = Children.count(children);
 
+    // FUNCTIONS
     const setPage: (pageNumber: number, behavior: 'auto' | 'smooth') => void = (pageNumber, behavior) => {
         slideWidth.current = swiper.current!.clientWidth / slideCount;
 
-        page.current = pageNumber;
+        setCurrentPage(pageNumber);
 
-        currentOffset.current = -(slideWidth.current * page.current);
+        currentOffset.current = -(slideWidth.current * pageNumber);
 
         swiper.current!.scroll({ left: -currentOffset.current, behavior });
 
         prevOffset.current = currentOffset.current;
+
+        if (onSwipe) onSwipe(pageNumber);
     };
 
     const move: (event: React.MouseEvent) => void = event => {
@@ -85,21 +104,32 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
 
     useEffect(() => {
         if (!arrowLeftPressed) return;
-        if (page.current === 0) return;
+        if (currentPage === 0) return;
 
-        setPage(page.current - 1, 'auto');
+        setPage(currentPage - 1, 'auto');
     }, [arrowLeftPressed]); // eslint-disable-line
 
     useEffect(() => {
         if (!arrowRightPressed) return;
-        if (page.current >= childCount - slideCount) return;
+        if (currentPage >= childCount - slideCount) return;
 
-        setPage(page.current + 1, 'auto');
+        setPage(currentPage + 1, 'auto');
     }, [arrowRightPressed]); // eslint-disable-line
 
     useEffect(() => {
         setPage(0, 'auto');
     }, [isTouch]); // eslint-disable-line
+
+    useEffect(() => {
+        if (!onChange) return;
+        onChange(slideCount, swiper.current?.getBoundingClientRect()!);
+    }, [slideCount, onChange, width]);
+
+    useEffect(() => {
+        setPage(updatePage!, 'smooth');
+    }, [updatePage]); // eslint-disable-line
+
+    console.log('RENDER');
 
     return (
         <>
@@ -110,6 +140,13 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
                     onMouseDown={start}
                     onMouseMove={use}
                     onMouseUp={stop}
+                    onTouchEnd={() => {
+                        const page = Math.round(swiper.current?.scrollLeft! / slideWidth.current);
+                        setCurrentPage(page);
+                        prevOffset.current = page * slideWidth.current;
+                        console.log(page);
+                        if (onSwipe) onSwipe(page);
+                    }}
                     ref={swiper}
                 >
                     <div
@@ -117,6 +154,8 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
                         style={{
                             width: `${(100 / slideCount) * childCount}%`
                         }}
+                        current-index={currentPage}
+                        current-slide-count={slideCount}
                     >
                         {children}
                     </div>
@@ -125,6 +164,10 @@ const Swiper: React.FC<Props> = ({ children, slidesOnDisplay, style, className, 
             {!slideCount && 'Loading...'}
         </>
     );
+};
+
+Swiper.defaultProps = {
+    page: 0
 };
 
 export default Swiper;

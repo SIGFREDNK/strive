@@ -1,5 +1,6 @@
 .droppable {
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: fit-content;
     padding: 0.5rem 0;

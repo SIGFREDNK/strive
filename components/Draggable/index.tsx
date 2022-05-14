@@ -2,7 +2,12 @@
 import React, { useState, useEffect } from 'react';
 
 // TYPES
-import Props from './props';
+type Props = {
+    children: React.ReactNode;
+    style?: React.CSSProperties;
+    className?: string;
+    id?: string;
+};
 
 // STYLES
 import styles from './draggable.module.scss';

@@ -1,139 +1,109 @@
+// DEFAULT
+
 .header {
-    background-color: var(--nav-background);
-    height: 4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--nav-item-text-color);
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    padding: 0 2rem;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-.left {
-    display: flex;
-}
-
-.title {
-    margin-left: 1.5rem;
-    transition: margin 300ms ease-in;
-}
-
-.title2 {
-    display: none;
-}
-
-.push {
-    margin-left: 14rem;
-}
-
-.link {
-    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-    border-radius: 0.3rem;
-    margin: 0 0.5rem;
-}
-
-.link:hover {
-    background-color: var(--nav-item-hover);
-}
-
-.selected {
-    background-color: var(--selected-nav-item);
-    color: var(--white);
-}
-
-.other {
-    display: flex;
-    align-items: center;
-}
-
-.profile {
-    position: relative;
-    width: 2rem;
-    height: 2rem;
-    margin: 0 0.5rem 0 0.25rem;
-    cursor: pointer;
-}
-
-.profile > * {
-    border-radius: 50%;
-}
-
-.hamburger {
-    cursor: pointer;
-}
-
-.bell,
-.cog {
-    padding: 0.25rem;
-    margin: 0 0.25rem;
-    cursor: pointer;
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    margin-right: 0.5rem;
-    position: relative;
-}
-
-.searchbar {
-    background-color: #374151;
-    height: 2.5rem;
-    width: 18rem;
-    border-radius: 0.4rem;
-    border: none;
-    padding-left: 2.5rem;
-    outline: none;
-    color: #8a919e;
-}
-
-.searchbar::placeholder {
-    color: #8a919e;
-}
-
-.search {
-    position: absolute;
-    left: 0.7rem;
-    cursor: pointer;
-}
-
-@media screen and (max-width: 900px) {
-    .link {
-        display: none;
-    }
-    .header {
-        padding: 0 1rem;
-        justify-content: space-between;
-    }
-    .header > div {
-        width: 6rem;
-    }
-    .container {
-        width: 1.75rem;
-    }
-    .container input {
-        display: none;
-    }
-    .title {
-        display: none;
-    }
-    .title2 {
+    & {
+        height: 5rem;
         display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        width: 100%;
+        padding-right: 2rem;
+        transition: padding 300ms ease-in-out;
     }
-    .cog {
-        display: none;
+
+    .widget {
+        & {
+            display: flex;
+            gap: 1rem;
+            width: 7rem;
+        }
+
+        * {
+            cursor: pointer;
+            width: 1.75rem;
+            height: 1.75rem;
+            padding: 0.15rem;
+        }
+
+        .cog {
+            display: none;
+        }
     }
-    .other {
-        justify-content: flex-start;
-        flex-direction: row-reverse;
+
+    .title {
+        font-family: 'Poppins', sans-serif;
+        font-size: min(1.25rem, 4.5vw);
+        font-weight: 600;
+        letter-spacing: 1px;
     }
-    .bell {
-        margin: 0;
+
+    .cta {
+        & {
+            display: flex;
+            gap: 1rem;
+            width: 7rem;
+            justify-content: flex-end;
+        }
+
+        * {
+            cursor: pointer;
+            width: 1.75rem;
+            height: 1.75rem;
+            padding: 0.15rem;
+        }
+
+        .bell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .counter {
+            position: absolute;
+            left: 0.75rem;
+            top: -0.25rem;
+            background-color: mediumslateblue;
+            color: #fff;
+            width: 1.25rem;
+            height: 1.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            border-radius: 50%;
+            line-height: 1;
+        }
     }
-    .profile {
-        display: none;
+
+    &.open {
+        padding-left: 20rem;
+    }
+
+    &.closed {
+        padding-left: 6rem;
+    }
+
+    @media only screen and (max-width: 729px) {
+        &.open,
+        &.closed {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .widget,
+        .cta {
+            gap: 0.5rem;
+        }
+
+        .widget .cog {
+            display: inline;
+        }
+
+        .cta .cog {
+            display: none;
+        }
     }
 }

@@ -1,10 +1,13 @@
 .button {
-    font-size: 1rem;
-    height: 3rem;
-    border-radius: 0.4rem;
     font-family: 'Poppins';
     font-weight: 400;
     cursor: pointer;
-    width: 80vw;
-    max-width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.button span {
+    margin-left: 0.75rem;
 }

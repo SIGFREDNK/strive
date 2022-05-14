@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 const useWidth = () => {
-    const [width, setWidth] = useState(0); // default width, detect on server.
+    const [width, setWidth] = useState(0);
 
     const handleResize = useCallback(() => {
         setWidth(window.innerWidth);

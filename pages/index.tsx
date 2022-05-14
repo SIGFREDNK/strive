@@ -10,30 +10,34 @@ import Typography from 'components/Typography';
 // STYLES
 import styles from 'styles/index.module.scss';
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
     return (
         <Setup title="Strive" background="#5d86ff" classes={styles.page}>
             <div className={styles.wrapper}>
                 <Typography text="Strive" variant="title1" component="h1" />
-                <Typography
-                    text="Track your progress - Achieve your goals"
-                    variant="subtitle1"
-                    component="h4"
-                />
+                <Typography text="Track your progress - Achieve your goals" variant="subtitle1" component="h4" />
                 <div className={styles.container}>
                     <div className={styles.button}>
-                        <Link href="/auth/login" passHref>
-                            <a>
-                                <Button text="Login" backgroundColor="#f4f2f4" color="#000000" />
-                            </a>
-                        </Link>
+                        <Button
+                            text="Login"
+                            backgroundColor="#f4f2f4"
+                            color="#000000"
+                            size="large"
+                            style={{ width: '80vw', maxWidth: '20rem' }}
+                            type="link"
+                            path="/auth/login"
+                        />
                     </div>
                     <div className={styles.button}>
-                        <Link href="/auth/signup" passHref>
-                            <a>
-                                <Button text="Signup" backgroundColor="#edd668" color="#000000" />
-                            </a>
-                        </Link>
+                        <Button
+                            text="Signup"
+                            backgroundColor="#edd668"
+                            color="#000000"
+                            size="large"
+                            style={{ width: '80vw', maxWidth: '20rem' }}
+                            type="link"
+                            path="/auth/signup"
+                        />
                     </div>
                 </div>
             </div>
@@ -41,4 +45,4 @@ const Home: NextPage = () => {
     );
 };
 
-export default Home;
+export default Index;

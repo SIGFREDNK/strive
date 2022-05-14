@@ -17,79 +17,86 @@ let dragged: any;
 const pickup: (event: React.MouseEvent | React.TouchEvent) => void = event => {
     if (event instanceof TouchEvent) event.preventDefault();
 
-    dragged = event.currentTarget; // store the draggable the user is dragging
+    dragged = event.currentTarget;
 
-    dragged.classList.add('dragging'); // add class dragging to draggable the user is dragging for styling
+    dragged.classList.add('dragging');
 
-    dragged.style.width = `${dragged.getBoundingClientRect().width}px`; // set the width in px instead of % so it remains after we make the draggables position fixed
+    dragged.style.width = `${dragged.getBoundingClientRect().width}px`;
 
-    dragged.style.pointerEvents = 'none'; // makes us able to select the element underneath the active draggable
+    dragged.style.pointerEvents = 'none';
 
-    const passiveDraggables = document.querySelectorAll<HTMLElement>('.draggable:not(.dragging)'); // select all the inactive draggables
-    passiveDraggables.forEach(draggable => draggable.classList.add('inactive')); // make their content unselectable, so we are more easily able to hit the droppables/draggables when placing the active draggable
+    const passiveDraggables = document.querySelectorAll<HTMLElement>('.draggable:not(.dragging)');
+    passiveDraggables.forEach(draggable => draggable.classList.add('inactive'));
 };
 
-const move: (event: React.MouseEvent | React.TouchEvent) => void = event => {
-    if (!dragged) return; // return if we have not selected a draggable at the start of the touch session
+const move: (
+    event: React.MouseEvent | React.TouchEvent,
+    cb:
+        | undefined
+        | ((
+              fingerXPosition: number,
+              fingerYPosition: number,
+              target: Element | null
+          ) => any | void | unknown | undefined)
+) => void = (event, cb) => {
+    if (!dragged) return;
 
-    removeDragoverStyles(); // remove any previous styles given to the target or previous target
+    removeDragoverStyles();
 
-    dragged.style.position = 'fixed'; // makes us able to move the active draggable
+    dragged.style.position = 'fixed';
 
-    const fingerXPosition = getCurrentXPosition(event); // gets the current x position of the finger
-    const fingerYPosition = getCurrentYPosition(event); // gets the current y position of the finger
+    const fingerXPosition = getCurrentXPosition(event);
+    const fingerYPosition = getCurrentYPosition(event);
 
-    moveDraggableToFingerPosition(fingerXPosition, fingerYPosition, dragged); // moves the draggable to where the finger currently is
+    moveDraggableToFingerPosition(fingerXPosition, fingerYPosition, dragged);
 
-    const target = document.elementFromPoint(fingerXPosition, fingerYPosition); // get the element right under the users finger
+    const target = document.elementFromPoint(fingerXPosition, fingerYPosition);
 
-    if (!target?.classList.contains('droppable') && !target?.classList.contains('draggable')) return; // return if there is no valid target
+    if (cb) cb(fingerXPosition, fingerYPosition, target);
 
-    target.classList.add('dragover'); // add class to target for highlighting
+    if (!target?.classList.contains('droppable') && !target?.classList.contains('draggable')) return;
+
+    target.classList.add('dragover');
 
     detectWhichHalfOfTargetIsClosest(
         event,
         () => {
-            // in case of bottom
             if (target.classList.contains('droppable')) return target.lastElementChild?.classList.add('after');
-            target.classList.add('after'); // show placement indicator below target
+            target.classList.add('after');
         },
         () => {
-            // in case of top
             if (target.classList.contains('droppable')) return target.firstElementChild?.classList.add('before');
-            target.classList.add('before'); // show placement indicator above target
+            target.classList.add('before');
         },
         target
     );
 };
 
 const place: (event: React.MouseEvent | React.TouchEvent) => void = event => {
-    if (!dragged) return; // return if we have not selected a draggable at the start of the touch session
+    if (!dragged) return;
 
-    const fingerXPosition = getCurrentXPosition(event); // gets the current x position of the finger
-    const fingerYPosition = getCurrentYPosition(event); // gets the current y position of the finger
+    const fingerXPosition = getCurrentXPosition(event);
+    const fingerYPosition = getCurrentYPosition(event);
 
     // TODO: ADD FUNCTION
-    const target = document.elementFromPoint(fingerXPosition, fingerYPosition); // get the element right under the users finger
+    const target = document.elementFromPoint(fingerXPosition, fingerYPosition);
 
     if (!target?.classList.contains('droppable') && !target?.classList.contains('draggable'))
-        return (dragged = resetDragged(dragged)); // reset if there is no valid target;
+        return (dragged = resetDragged(dragged));
 
     detectWhichHalfOfTargetIsClosest(
         event,
         () => {
-            console.log('Append');
             if (target?.classList.contains('droppable')) target.append(dragged);
             if (target?.classList.contains('draggable')) target.insertAdjacentElement('afterend', dragged);
         },
         () => {
-            console.log('Prepend');
             if (target?.classList.contains('droppable')) target.prepend(dragged);
             if (target?.classList.contains('draggable')) target.insertAdjacentElement('beforebegin', dragged);
         }
     );
 
-    dragged = resetDragged(dragged); // resets active draggables styling, the passive draggables styling, removes dragging class from active draggable and sets dragged variable equal to null
+    dragged = resetDragged(dragged);
 };
 
 export { pickup, move, place };

@@ -1,0 +1,97 @@
+// DEFAULT
+.item {
+    & {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #7d8085;
+        transition: background-color 300ms linear 300ms;
+    }
+
+    &.selected,
+    &.selected .link svg,
+    &:hover,
+    &:hover .link svg {
+        color: #000000;
+    }
+
+    .link {
+        height: 3rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #b0b1b5;
+        }
+    }
+
+    &.open {
+        padding: 0 1rem;
+        transition: none;
+
+        &.selected,
+        &:hover {
+            background-color: #f6f7f9;
+            border-radius: 0.3rem;
+        }
+
+        .action,
+        .title,
+        .link svg {
+            animation: fade-in 300ms linear 300ms;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+
+        .link svg {
+            margin-right: 1rem;
+        }
+    }
+
+    &.closed {
+        animation: fade-in 300ms linear 300ms;
+        animation-fill-mode: forwards;
+        opacity: 0;
+
+        &.selected {
+            background-color: #ffffff;
+        }
+
+        .title,
+        .action {
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 729px) {
+        .title,
+        .action {
+            display: none;
+        }
+
+        .link {
+            width: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -7,10 +7,10 @@ type Props = {
 };
 
 // STYLES
-import styles from './listitem.module.scss';
+import styles from './card.module.scss';
 
-const ListItem: React.FC<Props> = ({ children }) => {
+const Card: React.FC<Props> = ({ children }) => {
     return <div className={styles.item}>{children}</div>;
 };
 
-export default ListItem;
+export default Card;

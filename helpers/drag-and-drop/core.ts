@@ -1,5 +1,3 @@
-import React from 'react';
-
 const detectWhichHalfOfTargetIsClosest: (
     event: any,
     before: () => void,
@@ -49,7 +47,6 @@ const moveDraggableToFingerPosition: (xPosition: number, yPosition: number, drag
     const halfWidthOfDraggable = dragged.getBoundingClientRect().width / 2; // gets half the width of the active draggable (used for centering)
     const halfHeightOfDraggable = dragged.getBoundingClientRect().height / 2; // gets half the height of the active draggable (used for centering)
     const { translateX, translateY } = offsetParentTransform(dragged);
-    console.log(yPosition);
     dragged.style.left = `${xPosition - halfWidthOfDraggable + -translateX}px`; // sets the left position of the draggable to the x position of the users finger - half of the draggables width, which places it perfectly centered under the users finger horizontally
     dragged.style.top = `${yPosition - halfHeightOfDraggable + -translateY}px`; // sets the top position of the draggable to the y position of the users finger - half of the draggables height, which places it perfectly centered under the users finger vertically
 };

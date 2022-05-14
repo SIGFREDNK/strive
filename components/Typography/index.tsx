@@ -5,7 +5,7 @@ import React, { ReactElement } from 'react';
 type TypographyComponent = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'small';
 type Variants = 'title1' | 'title2' | 'subtitle1' | 'subtitle2' | 'body1' | 'body2';
 
-type props = {
+type Props = {
     component?: TypographyComponent;
     variant?: Variants;
     text: string;
@@ -17,7 +17,7 @@ type props = {
 // STYLES
 import styles from './Typography.module.scss';
 
-const Typography: React.FC<props> = ({ component, text, color, style, variant, className }) => {
+const Typography: React.FC<Props> = ({ component, text, color, style, variant, className }) => {
     if (!component) {
         switch (variant) {
             case 'title1':

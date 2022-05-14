@@ -14,7 +14,7 @@ type Props = {
 };
 
 // STYLES
-import styles from './Setup.module.scss';
+import styles from './setup.module.scss';
 
 const Setup: React.FC<Props> = ({ title, style, background, children, classes }) => {
     return (

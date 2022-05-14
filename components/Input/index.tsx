@@ -14,11 +14,9 @@ interface CommonProps {
     required?: boolean;
 }
 
-type TypeProps =
-    | { type?: 'password'; toggleVisibility?: boolean }
-    | { type?: string; toggleVisibility?: never };
+type TypeProps = { type?: 'password'; toggleVisibility?: boolean } | { type?: string; toggleVisibility?: never };
 
-type props = CommonProps & TypeProps;
+type Props = CommonProps & TypeProps;
 
 // ICONS
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -27,16 +25,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 // STYLES
 import styles from './input.module.scss';
 
-const Input: React.FC<props> = ({
-    onChange,
-    type,
-    label,
-    name,
-    placeholder,
-    required,
-    toggleVisibility,
-    children
-}) => {
+const Input: React.FC<Props> = ({ onChange, type, label, name, placeholder, required, toggleVisibility, children }) => {
     const [visible, setVisible] = useState(false);
     let toggleType = visible ? 'text' : 'password';
 
@@ -54,18 +43,10 @@ const Input: React.FC<props> = ({
                 required={required}
             />
             {toggleVisibility && visible && (
-                <VisibilityIcon
-                    onClick={() => setVisible(false)}
-                    className={styles.visibility}
-                    fontSize="small"
-                />
+                <VisibilityIcon onClick={() => setVisible(false)} className={styles.visibility} fontSize="small" />
             )}
             {toggleVisibility && !visible && (
-                <VisibilityOffIcon
-                    onClick={() => setVisible(true)}
-                    className={styles.visibility}
-                    fontSize="small"
-                />
+                <VisibilityOffIcon onClick={() => setVisible(true)} className={styles.visibility} fontSize="small" />
             )}
             {children}
         </div>
