@@ -15,7 +15,7 @@ type Props = {
     breakpoints?: Breakpoint[];
     onSwipe?: (pageNumber: number) => any;
     onChange?: (slideCount: number, boundingBox: DOMRect) => any;
-    page?: number;
+    page: number;
     updatePage?: number;
 };
 
@@ -47,7 +47,7 @@ const Swiper: React.FC<Props> = ({
     const width = useWidth();
 
     // REFS
-    const [currentPage, setCurrentPage] = useState(page!);
+    const [currentPage, setCurrentPage] = useState(page);
     const prevOffset = useRef(0);
     const currentOffset = useRef(0);
     const slideWidth = useRef(0);
@@ -134,30 +134,31 @@ const Swiper: React.FC<Props> = ({
     return (
         <>
             {slideCount && (
-                <div
-                    className={`${styles.swiper} ${className} swiper ${isTouch ? styles.snap : ''}`}
-                    style={style}
-                    onMouseDown={start}
-                    onMouseMove={use}
-                    onMouseUp={stop}
-                    onTouchEnd={() => {
-                        const page = Math.round(swiper.current?.scrollLeft! / slideWidth.current);
-                        setCurrentPage(page);
-                        prevOffset.current = page * slideWidth.current;
-                        console.log(page);
-                        if (onSwipe) onSwipe(page);
-                    }}
-                    ref={swiper}
-                >
+                <div className={styles.grid}>
                     <div
-                        className={`${styles.slider} slider`}
-                        style={{
-                            width: `${(100 / slideCount) * childCount}%`
+                        className={`${styles.swiper} ${className} swiper ${isTouch ? styles.snap : ''}`}
+                        style={style}
+                        onMouseDown={start}
+                        onMouseMove={use}
+                        onMouseUp={stop}
+                        onMouseLeave={stop}
+                        onTouchEnd={() => {
+                            const page = Math.round(swiper.current?.scrollLeft! / slideWidth.current);
+                            setCurrentPage(page);
+                            prevOffset.current = page * slideWidth.current;
+                            console.log(page);
+                            if (onSwipe) onSwipe(page);
                         }}
-                        current-index={currentPage}
-                        current-slide-count={slideCount}
+                        ref={swiper}
                     >
-                        {children}
+                        <div
+                            className={`${styles.slider} slider`}
+                            style={{
+                                width: `${(100 / slideCount) * childCount}%`
+                            }}
+                        >
+                            {children}
+                        </div>
                     </div>
                 </div>
             )}

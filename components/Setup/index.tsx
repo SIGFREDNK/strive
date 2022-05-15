@@ -8,15 +8,14 @@ import Head from 'next/head';
 type Props = {
     title: string;
     style?: object;
-    background?: string;
     children?: React.ReactNode;
-    classes?: string;
+    className?: string;
 };
 
 // STYLES
 import styles from './Setup.module.scss';
 
-const Setup: React.FC<Props> = ({ title, style, background, children, classes }) => {
+const Setup: React.FC<Props> = ({ title, style, children, className }) => {
     return (
         <>
             <Head>
@@ -25,7 +24,7 @@ const Setup: React.FC<Props> = ({ title, style, background, children, classes })
                 <meta name="keywords" content="Planning Productivity" />
                 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5" />
             </Head>
-            <main className={`${styles.root} ${classes}`} style={{ ...style, background }}>
+            <main className={`${styles.root} ${className}`} style={{ ...style }}>
                 {children}
             </main>
         </>
@@ -33,8 +32,7 @@ const Setup: React.FC<Props> = ({ title, style, background, children, classes })
 };
 
 Setup.defaultProps = {
-    background: '#f3f4f6',
-    classes: ''
+    className: ''
 };
 
 export default Setup;

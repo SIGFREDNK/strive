@@ -31,14 +31,14 @@ const Header: React.FC<Props> = ({ open, title }) => {
                         router.back();
                     }}
                     aria-label="Back"
+                    className={styles.back}
                 >
                     <BackIcon />
                 </button>
-                <SettingsIcon className={styles.cog} />
+                <SearchRoundedIcon className={styles.search} />
             </div>
             <h2 className={styles.title}>{title}</h2>
             <div className={styles.cta}>
-                <SearchRoundedIcon />
                 <div className={styles.bell}>
                     <NotificationsIcon />
                     <span className={styles.counter}>0</span>

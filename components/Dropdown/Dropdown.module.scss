@@ -1,0 +1,14 @@
+.dropdown svg {
+    line-height: 1;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.3rem;
+}
+
+.open {
+    transform: rotate(180deg);
+}
+
+.closed {
+    transform: rotate(0deg);
+}

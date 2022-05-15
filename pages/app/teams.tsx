@@ -1,17 +1,21 @@
-// NEXT
-import type { NextPage } from 'next';
-
 // COMPONENTS
-import AppLayout from 'layouts/AppLayout';
+import App from 'layouts/App';
+
+// TYPES
+import NextPageWithLayout from 'interfaces/NextPageWIthLayout';
 
 // STYLES
 import 'styles/Teams.module.scss';
 
-const Teams: NextPage = () => {
+const Teams: NextPageWithLayout = () => {
+    return <div>Teams</div>;
+};
+
+Teams.getLayout = function getLayout(page) {
     return (
-        <AppLayout title="Today" selected="TEAMS">
-            <div>Teams</div>
-        </AppLayout>
+        <App title="Teams" selected="TEAMS">
+            {page}
+        </App>
     );
 };
 

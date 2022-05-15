@@ -26,17 +26,21 @@
             height: 1.75rem;
             padding: 0.15rem;
         }
-
-        .cog {
-            display: none;
-        }
     }
 
     .title {
         font-family: 'Poppins', sans-serif;
-        font-size: min(1.25rem, 4.5vw);
+        font-size: min(1rem, 3vw);
         font-weight: 600;
         letter-spacing: 1px;
+
+        @media only screen and (max-width: 360px) {
+            display: none;
+        }
+    }
+
+    .back {
+        display: none;
     }
 
     .cta {
@@ -45,6 +49,10 @@
             gap: 1rem;
             width: 7rem;
             justify-content: flex-end;
+        }
+
+        .cog {
+            display: inline-block;
         }
 
         * {
@@ -102,8 +110,8 @@
             display: inline;
         }
 
-        .cta .cog {
-            display: none;
+        .back {
+            display: inherit;
         }
     }
 }

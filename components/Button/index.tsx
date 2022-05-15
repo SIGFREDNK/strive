@@ -92,8 +92,7 @@ const Button: React.FC<Props> = ({
                         color,
                         padding,
                         borderRadius,
-                        fontSize,
-                        boxShadow: '0 0 3px rgba(255, 255, 255, 0.2)'
+                        fontSize
                     }}
                     onClick={event => onClick!(event)}
                     whileHover={{ scale: 1.035 }}

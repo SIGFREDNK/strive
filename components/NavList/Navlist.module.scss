@@ -60,22 +60,30 @@
         }
     }
 
-    @media only screen and (max-width: 729px) {
-        .subtitle {
-            display: none;
-        }
-
-        &:nth-child(2) {
-            margin-bottom: 0;
-            .section {
-                flex-direction: row;
-                width: 100%;
-                justify-content: space-around;
+    &.open,
+    &.closed {
+        @media only screen and (max-width: 729px) {
+            .subtitle {
+                display: none;
             }
-        }
 
-        &:nth-child(3) {
-            display: none;
+            &:nth-child(even) {
+                margin-bottom: 0;
+                .section {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    justify-content: space-around;
+                }
+            }
+
+            &:nth-child(even)::after {
+                display: none;
+            }
+
+            &:nth-child(3) {
+                display: none;
+            }
         }
     }
 }

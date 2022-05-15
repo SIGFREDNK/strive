@@ -1,7 +1,7 @@
 // NEXT
-import type { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next';
 
 // REACT
 import { useState } from 'react';
@@ -9,10 +9,10 @@ import { useState } from 'react';
 // COMPONENTS
 import Input from 'components/Input';
 
-// TEMPLATES
-import AuthLayout from 'layouts/AuthLayout';
+// LAYOUT
+import Auth from 'layouts/Auth';
 
-// API
+// HELPERS
 import { login } from 'helpers/api';
 
 // STYLES
@@ -24,7 +24,7 @@ const Login: NextPage = () => {
     const router = useRouter();
 
     return (
-        <AuthLayout
+        <Auth
             title="Welcome back"
             subtitle="Please use the form to login"
             onSubmit={() => login(email, password, router)}
@@ -59,7 +59,7 @@ const Login: NextPage = () => {
                     <Link href="/forgotten">Forgotten password?</Link>
                 </div>
             </Input>
-        </AuthLayout>
+        </Auth>
     );
 };
 

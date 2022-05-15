@@ -1,0 +1,17 @@
+.page {
+    display: grid;
+}
+
+.widgets {
+    height: 4rem;
+    margin-bottom: 1rem;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    .daypicker {
+        width: 8rem;
+        background-color: #ffffff;
+        height: 2.5rem;
+    }
+}

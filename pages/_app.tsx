@@ -1,24 +1,17 @@
-// NEXT
-import type { AppProps } from 'next/app';
+// TYPES
+import AppPropsWithLayout from 'interfaces/AppPropsWithLayout';
 
 // GLOBAL STYLES
 import 'globals.scss';
 
 // FRAMER MOTION
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
-function MyApp({ Component, pageProps, router }: AppProps) {
-    return (
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+    const getLayout = Component.getLayout ?? (page => page);
+    return getLayout(
         <AnimatePresence exitBeforeEnter initial={false}>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, type: 'linear' }}
-                key={router.route}
-            >
-                <Component {...pageProps} />
-            </motion.div>
+            <Component {...pageProps} />
         </AnimatePresence>
     );
 }

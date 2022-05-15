@@ -12,7 +12,7 @@ import { useState } from 'react';
 import Input from 'components/Input';
 
 // TEMPLATES
-import AuthLayout from 'layouts/AuthLayout';
+import AuthLayout from 'layouts/Auth';
 
 // API
 import { login } from 'helpers/api';

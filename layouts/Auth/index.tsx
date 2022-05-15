@@ -25,7 +25,7 @@ type Props = {
 };
 
 // STYLES
-import styles from './authlayout.module.scss';
+import styles from './auth.module.scss';
 
 const AuthLayout: React.FC<Props> = ({
     onSubmit,
@@ -42,7 +42,7 @@ const AuthLayout: React.FC<Props> = ({
     };
 
     return (
-        <Setup title={pageTitle} classes={styles.page}>
+        <Setup title={pageTitle} className={styles.page}>
             <Form onSubmit={onSubmit} className={`${styles.entry} ${styles.login}`}>
                 <div className={styles.back}>
                     <Link href="/" passHref>

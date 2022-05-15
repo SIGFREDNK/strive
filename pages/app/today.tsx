@@ -1,17 +1,21 @@
-// NEXT
-import type { NextPage } from 'next';
-
 // COMPONENTS
-import AppLayout from 'layouts/AppLayout';
+import App from 'layouts/App';
+
+// TYPES
+import NextPageWithLayout from 'interfaces/NextPageWIthLayout';
 
 // STYLES
 import 'styles/Today.module.scss';
 
-const Today: NextPage = () => {
+const Today: NextPageWithLayout = () => {
+    return <div>Today</div>;
+};
+
+Today.getLayout = function getLayout(page) {
     return (
-        <AppLayout title="Today" selected="TODAY">
-            <div>Today</div>
-        </AppLayout>
+        <App title="Today" selected="TODAY">
+            {page}
+        </App>
     );
 };
 

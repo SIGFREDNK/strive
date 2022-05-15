@@ -5,7 +5,7 @@ const useTouchDevice: () => boolean = () => {
     const [isTouch, setIsTouch] = useState(false);
 
     useEffect(() => {
-        const handleChange: (event: MediaQueryListEvent) => void = event => setIsTouch(mediaQuery.matches);
+        const handleChange: () => void = () => setIsTouch(mediaQuery.matches);
 
         const mediaQuery = window.matchMedia('(pointer: coarse)');
         setIsTouch(mediaQuery.matches);

@@ -12,7 +12,7 @@ import styles from 'styles/Landing.module.scss';
 
 const Index: NextPage = () => {
     return (
-        <Setup title="Strive" background="#5d86ff" classes={styles.page}>
+        <Setup title="Strive" className={styles.page}>
             <div className={styles.wrapper}>
                 <Typography text="Strive" variant="title1" component="h1" />
                 <Typography text="Track your progress - Achieve your goals" variant="subtitle1" component="h4" />

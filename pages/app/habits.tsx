@@ -1,17 +1,21 @@
-// NEXT
-import type { NextPage } from 'next';
-
 // COMPONENTS
-import AppLayout from 'layouts/AppLayout';
+import App from 'layouts/App';
+
+// TYPES
+import NextPageWithLayout from 'interfaces/NextPageWIthLayout';
 
 // STYLES
 import 'styles/Habits.module.scss';
 
-const Habits: NextPage = () => {
+const Habits: NextPageWithLayout = () => {
+    return <div>Habits</div>;
+};
+
+Habits.getLayout = function getLayout(page) {
     return (
-        <AppLayout title="Today" selected="HABITS">
-            <div>Habits</div>
-        </AppLayout>
+        <App title="Habits" selected="HABITS">
+            {page}
+        </App>
     );
 };
 
