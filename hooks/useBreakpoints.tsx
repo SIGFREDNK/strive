@@ -7,16 +7,15 @@ import Breakpoint from '../interfaces/Breakpoint';
 const useBreakpoints: (defaultValue: number, breakpoints: Breakpoint[]) => number = (defaultValue, breakpoints) => {
     const [slideCount, setSlideCount] = useState(defaultValue);
 
-    let mediaQueries: MediaQueryList[] = [];
-    let slideCountOfPreviousBreakpoint: number;
-    let matches: number[] = [];
-
     useEffect(() => {
+        let slideCountOfPreviousBreakpoint: number;
+        let matches: number[] = [];
+        let mediaQueries: MediaQueryList[] = [];
         breakpoints.sort((a: Breakpoint, b: Breakpoint) => b.width - a.width);
 
         breakpoints.map(breakpoint => {
             const handleChange = (event: MediaQueryListEvent) =>
-                setSlideCount(event.matches ? breakpoint.slidesOnDisplay : breakpoint.nextSlideValue);
+                setSlideCount(event.matches ? breakpoint.slidesOnDisplay : breakpoint.nextSlideValue!);
 
             breakpoint.nextSlideValue = slideCountOfPreviousBreakpoint ? slideCountOfPreviousBreakpoint : defaultValue;
 
