@@ -32,16 +32,16 @@ const Week: React.FC<Props> = ({ className, style }) => {
 
     const whileDragging: (xPosition: number, yPosition: number) => void = (xPosition, yPosition) => {
         const { right, left } = swiperBoundingBox.current!;
-        if (inRange(right - xPosition, -40, 40)) counterRight.current++;
-        if (inRange(left - xPosition, -40, 40)) counterLeft.current++;
+        if (inRange(right - xPosition, -80, 80)) counterRight.current++;
+        if (inRange(left - xPosition, -80, 80)) counterLeft.current++;
         if (counterRight.current > 20) {
             counterRight.current = 10;
             console.log('RIGHT');
             updateCurrentPage(currentPage => currentPage + 1);
         }
 
-        if (counterLeft.current > 20) {
-            counterLeft.current = 10;
+        if (counterLeft.current > 15) {
+            counterLeft.current = 5;
             updateCurrentPage(currentPage => currentPage - 1);
         }
     };
@@ -78,101 +78,102 @@ const Week: React.FC<Props> = ({ className, style }) => {
                 onChange={onChange}
                 page={page.current}
                 updatePage={currentPage}
+                className={styles.swiper}
             >
                 <Slide>
                     <h4>Monday</h4>
-                    <Droppable>
-                        <Draggable>
+                    <Droppable className="swiper-disabled">
+                        <Draggable className="swiper-disabled">
                             <Card>1</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>2</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>3</Card>
                         </Draggable>
                     </Droppable>
                 </Slide>
                 <Slide>
-                    <h4>Monday</h4>
-                    <Droppable>
-                        <Draggable>
+                    <h4>Tuesday</h4>
+                    <Droppable className="swiper-disabled">
+                        <Draggable className="swiper-disabled">
                             <Card>1</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>2</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>3</Card>
                         </Draggable>
                     </Droppable>
                 </Slide>
                 <Slide>
-                    <h4>Monday</h4>
-                    <Droppable>
-                        <Draggable>
+                    <h4>Wednesday</h4>
+                    <Droppable className="swiper-disabled">
+                        <Draggable className="swiper-disabled">
                             <Card>1</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>2</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>3</Card>
                         </Draggable>
                     </Droppable>
                 </Slide>
                 <Slide>
-                    <h4>Monday</h4>
-                    <Droppable>
-                        <Draggable>
+                    <h4>Thursday</h4>
+                    <Droppable className="swiper-disabled">
+                        <Draggable className="swiper-disabled">
                             <Card>1</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>2</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>3</Card>
                         </Draggable>
                     </Droppable>
                 </Slide>
                 <Slide>
-                    <h4>Monday</h4>
-                    <Droppable>
-                        <Draggable>
+                    <h4>Friday</h4>
+                    <Droppable className="swiper-disabled">
+                        <Draggable className="swiper-disabled">
                             <Card>1</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>2</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>3</Card>
                         </Draggable>
                     </Droppable>
                 </Slide>
                 <Slide>
-                    <h4>Monday</h4>
-                    <Droppable>
-                        <Draggable>
+                    <h4>Saturday</h4>
+                    <Droppable className="swiper-disabled">
+                        <Draggable className="swiper-disabled">
                             <Card>1</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>2</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>3</Card>
                         </Draggable>
                     </Droppable>
                 </Slide>
                 <Slide>
-                    <h4>Monday</h4>
-                    <Droppable>
-                        <Draggable>
+                    <h4>Sunday</h4>
+                    <Droppable className="swiper-disabled">
+                        <Draggable className="swiper-disabled">
                             <Card>1</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>2</Card>
                         </Draggable>
-                        <Draggable>
+                        <Draggable className="swiper-disabled">
                             <Card>3</Card>
                         </Draggable>
                     </Droppable>

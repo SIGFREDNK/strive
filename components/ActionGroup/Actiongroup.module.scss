@@ -12,10 +12,14 @@
 
 .group > *:first-child {
     border-right: 1px solid #f5f5f7;
+    border-top-left-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
 }
 
 .group > *:last-child {
     border-left: 1px solid #f5f5f7;
+    border-top-right-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;
 }
 
 .group > *:nth-child(1n + 2):not(:last-child) {

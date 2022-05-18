@@ -10,8 +10,17 @@
     justify-content: space-between;
 
     .daypicker {
-        width: 8rem;
+        width: 12rem;
         background-color: #ffffff;
         height: 2.5rem;
+
+        button:hover,
+        button.selected {
+            background: #f2f2f2;
+            -webkit-box-shadow: inset 0px 0px 3px #c7c7c7;
+            -moz-box-shadow: inset 0px 0px 3px #c7c7c7;
+            box-shadow: inset 0px 0px 3px #c7c7c7;
+            outline: none;
+        }
     }
 }

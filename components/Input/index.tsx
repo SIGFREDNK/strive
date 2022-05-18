@@ -10,8 +10,10 @@ interface CommonProps {
     type: InputType;
     label: string;
     name: string;
-    placeholder: string;
+    placeholder?: string;
     required?: boolean;
+    className?: string;
+    style?: React.CSSProperties;
 }
 
 type TypeProps = { type?: 'password'; toggleVisibility?: boolean } | { type?: string; toggleVisibility?: never };
@@ -25,12 +27,23 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 // STYLES
 import styles from './Input.module.scss';
 
-const Input: React.FC<Props> = ({ onChange, type, label, name, placeholder, required, toggleVisibility, children }) => {
+const Input: React.FC<Props> = ({
+    onChange,
+    type,
+    label,
+    name,
+    placeholder,
+    required,
+    toggleVisibility,
+    children,
+    className,
+    style
+}) => {
     const [visible, setVisible] = useState(false);
     let toggleType = visible ? 'text' : 'password';
 
     return (
-        <div className={styles.group}>
+        <div className={`${styles.group} ${className}`} style={{ ...style }}>
             <label htmlFor={name} className={styles.label}>
                 {`${label} ${required ? '*' : ''}`}
             </label>

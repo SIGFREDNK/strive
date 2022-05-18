@@ -5,6 +5,8 @@ import { useState } from 'react';
 import App from 'layouts/App';
 
 // PAGE COMPONENTS
+import TaskList from './components/TaskList';
+import Calendar from './components/Calendar';
 import Week from './components/Week';
 
 // TYPES
@@ -17,24 +19,35 @@ import ActionGroup from 'components/ActionGroup';
 import styles from './Schedule.module.scss';
 
 const Schedule: NextPageWithLayout = () => {
+    const [subpage, setSubpage] = useState(0);
+
     return (
         <div className={styles.page}>
             <div className={styles.widgets}>
                 <div className={styles.format}>F</div>
                 <ActionGroup className={styles.daypicker}>
-                    <button onClick={() => null}>M</button>
-                    <button onClick={() => null}>T</button>
+                    <button className={subpage === 0 ? styles.selected : ''} onClick={() => setSubpage(0)}>
+                        T
+                    </button>
+                    <button className={subpage === 1 ? styles.selected : ''} onClick={() => setSubpage(1)}>
+                        C
+                    </button>
+                    <button className={subpage === 2 ? styles.selected : ''} onClick={() => setSubpage(2)}>
+                        W
+                    </button>
                 </ActionGroup>
                 <div className={styles.filter}>F</div>
             </div>
-            <Week className={styles.week} />
+            {subpage === 0 && <TaskList className={styles.tasklist} />}
+            {subpage === 1 && <Calendar className={styles.calendar} />}
+            {subpage === 2 && <Week className={styles.week} />}
         </div>
     );
 };
 
 Schedule.getLayout = function getLayout(page) {
     return (
-        <App title="Weekly Schedule" selected="SCHEDULE">
+        <App title="Schedule" selected="SCHEDULE">
             {page}
         </App>
     );

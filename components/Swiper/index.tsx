@@ -134,7 +134,7 @@ const Swiper: React.FC<Props> = ({
     return (
         <>
             {slideCount && (
-                <div className={styles.grid}>
+                <div className={`${styles.grid}`}>
                     <div
                         className={`${styles.swiper} ${className} swiper ${isTouch ? styles.snap : ''}`}
                         style={style}
