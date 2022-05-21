@@ -1,0 +1,28 @@
+.calendarWrapper {
+    position: relative;
+
+    & .calendarButton {
+        background-color: white;
+        color: black;
+
+        &.active,
+        &:hover {
+            background-color: mediumslateblue;
+            color: #fff;
+        }
+    }
+
+    .calendar {
+        position: absolute;
+        top: 3rem;
+        z-index: 2;
+
+        &.show {
+            display: inline-block;
+        }
+
+        &.hidden {
+            display: none;
+        }
+    }
+}

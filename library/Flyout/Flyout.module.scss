@@ -1,0 +1,15 @@
+.flyout {
+    padding: 0.65rem 1.25rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    &.open {
+        display: flex;
+    }
+
+    &.closed {
+        display: none;
+    }
+}

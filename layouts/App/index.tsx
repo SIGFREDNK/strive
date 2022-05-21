@@ -1,9 +1,6 @@
 // REACT
 import React, { useState, useEffect } from 'react';
 
-// NEXT
-import { useRouter } from 'next/router';
-
 // TYPES
 import Selected from './interfaces/selected';
 
@@ -13,23 +10,34 @@ type Props = {
     children?: React.ReactNode;
 };
 
-// COMPONENTS
-import Setup from 'components/Setup';
+// UI COMPONENTS
+import Setup from 'library/Setup';
 
 // LAYOUT COMPONENTS
 import AppNavigation from './components/AppNavigation';
 import AppHeader from './components/AppHeader';
 
-// FRAMER MOTION
-import { motion, AnimatePresence } from 'framer-motion';
+// CUSTOM HOOKS
+import useLocalStorage from 'hooks/useLocalStorage';
+
+// DEPENDENCIES
+import { motion } from 'framer-motion';
 
 // STYLES
 import styles from './app.module.scss';
 
 const App: React.FC<Props> = ({ title, selected, children }) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState<null | boolean>(null);
 
-    const router = useRouter();
+    useEffect(() => {
+        const data = localStorage.getItem('nav-state');
+        if (data) setOpen(JSON.parse(data));
+        if (!data) setOpen(true);
+    }, []);
+
+    useEffect(() => {
+        if (open !== null) localStorage.setItem('nav-state', JSON.stringify(open));
+    }, [open]);
 
     useEffect(() => {
         const keyDown: (event: KeyboardEvent) => void = event => {
@@ -43,10 +51,17 @@ const App: React.FC<Props> = ({ title, selected, children }) => {
         document.addEventListener('keydown', keyDown);
 
         return () => document.removeEventListener('keydown', keyDown);
-    }, [open]);
+    }, [open]); // eslint-disable-line
+
+    if (open === null) return <></>;
 
     return (
-        <Setup title={title} className={styles.setup}>
+        <Setup
+            title={title}
+            description="Track your progress - Achieve your goals!"
+            keywords="Planning Productivity"
+            className={styles.setup}
+        >
             <AppHeader open={open} title={title} />
             <AppNavigation open={open} setOpen={(boolean: boolean) => setOpen(boolean)} selected={selected} />
             <motion.div

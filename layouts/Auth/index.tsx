@@ -5,9 +5,9 @@ import React from 'react';
 import Link from 'next/link';
 
 // COMPONENTS
-import Setup from 'components/Setup';
-import Form from 'components/Form';
-import Typography from 'components/Typography';
+import Setup from 'library/Setup';
+import Form from 'library/Form';
+import Typography from 'library/Typography';
 
 // ICONS
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -22,12 +22,14 @@ type Props = {
     subtitle: string;
     pageTitle: string;
     secondaryPath: string;
+    className?: string;
+    style?: React.CSSProperties;
 };
 
 // STYLES
 import styles from './auth.module.scss';
 
-const AuthLayout: React.FC<Props> = ({
+const Auth: React.FC<Props> = ({
     onSubmit,
     children,
     primary,
@@ -35,15 +37,22 @@ const AuthLayout: React.FC<Props> = ({
     title,
     subtitle,
     pageTitle,
-    secondaryPath
+    secondaryPath,
+    className,
+    style
 }) => {
     const submitOnEnter: (key: string) => void = key => {
         if (key === 'Enter') onSubmit();
     };
 
     return (
-        <Setup title={pageTitle} className={styles.page}>
-            <Form onSubmit={onSubmit} className={`${styles.entry} ${styles.login}`}>
+        <Setup
+            title={pageTitle}
+            description="Track your progress - Achieve your goals!"
+            keywords="Planning Productivity"
+            className={styles.page}
+        >
+            <Form onSubmit={onSubmit} className={`${styles.entry} ${className}`} style={{ ...style }}>
                 <div className={styles.back}>
                     <Link href="/" passHref>
                         <div>
@@ -73,4 +82,8 @@ const AuthLayout: React.FC<Props> = ({
     );
 };
 
-export default AuthLayout;
+Auth.defaultProps = {
+    className: ''
+};
+
+export default Auth;

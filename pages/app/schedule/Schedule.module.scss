@@ -4,7 +4,6 @@
 
 .widgets {
     height: 4rem;
-    margin-bottom: 1rem;
     padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -16,11 +15,35 @@
 
         button:hover,
         button.selected {
-            background: #f2f2f2;
+            background: mediumslateblue;
+            color: #fff;
             -webkit-box-shadow: inset 0px 0px 3px #c7c7c7;
             -moz-box-shadow: inset 0px 0px 3px #c7c7c7;
             box-shadow: inset 0px 0px 3px #c7c7c7;
             outline: none;
+        }
+    }
+
+    .controls {
+        display: flex;
+        gap: 0.5rem;
+
+        & .week,
+        & .completed,
+        & .calendarButton,
+        & .prioritized {
+            background-color: white;
+            color: black;
+
+            &[button-active-state='true'] {
+                background-color: mediumslateblue;
+                color: #fff;
+            }
+        }
+
+        & button[button-disabled='true'] {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgba(0, 0, 0, 0.2);
         }
     }
 }

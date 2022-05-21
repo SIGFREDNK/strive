@@ -1,0 +1,37 @@
+.other {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.other a {
+    color: #000000;
+    padding: 0.5rem 0;
+}
+
+.remember {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.remember input {
+    height: 1rem;
+    width: 1rem;
+}
+
+.remember span {
+    margin-left: 0.5rem;
+}
+
+.input {
+    width: 100vw;
+    max-width: 34rem;
+    padding: 0 2rem;
+    background-color: #fff;
+
+    & input {
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+    }
+}

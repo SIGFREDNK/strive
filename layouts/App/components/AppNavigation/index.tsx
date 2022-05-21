@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 
 // COMPONENTS
-import Navigation from 'components/Navigation';
-import Profile from 'components/Profile';
-import NavList from 'components/NavList';
-import NavItem from 'components/NavItem';
-import Counter from 'components/Counter';
+import Navigation from 'library/Navigation';
+import Profile from 'library/Profile';
+import NavList from 'library/NavList';
+import NavItem from 'library/NavItem';
+import Counter from 'library/Counter';
 
 // ICONS
 import HomeIcon from '@mui/icons-material/HomeRounded';
@@ -54,7 +54,12 @@ const AppNavigation: React.FC<Props> = ({ open, setOpen, selected }) => {
         <Navigation open={open}>
             <Profile name="Sigfred Knudsen" tag="#SigfredFNK" onClick={() => setOpen(open ? false : true)} />
             <NavList title="Menu">
-                <NavItem icon={<HomeIcon />} title="Home" path="/app" selected={selected === 'HOME' ? true : false} />
+                <NavItem
+                    icon={<HomeIcon />}
+                    title="Home"
+                    path="/app/home"
+                    selected={selected === 'HOME' ? true : false}
+                />
                 <NavItem
                     icon={<MyDayIcon />}
                     title="Today"

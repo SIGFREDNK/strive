@@ -15,7 +15,29 @@ import {
 let dragged: any;
 
 const pickup: (event: React.MouseEvent | React.TouchEvent) => void = event => {
-    if (event instanceof TouchEvent) event.preventDefault();
+    let target: Element;
+    if (event.nativeEvent instanceof TouchEvent) {
+        event.preventDefault();
+        target = document.elementFromPoint(event.nativeEvent.touches[0].clientX, event.nativeEvent.touches[0].clientY)!;
+        if (target.classList.contains('draggable-disabled')) return;
+        if (
+            target.parentElement &&
+            target.parentElement.classList &&
+            target.parentElement.classList.contains('draggable-disabled')
+        )
+            return;
+    }
+
+    if (event.nativeEvent instanceof MouseEvent) {
+        target = document.elementFromPoint(event.nativeEvent.clientX, event.nativeEvent.clientY)!;
+        if (target.classList.contains('draggable-disabled')) return;
+        if (
+            target.parentElement &&
+            target.parentElement.classList &&
+            target.parentElement.classList.contains('draggable-disabled')
+        )
+            return;
+    }
 
     dragged = event.currentTarget;
 

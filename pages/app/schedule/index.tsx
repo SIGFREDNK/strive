@@ -5,42 +5,68 @@ import { useState } from 'react';
 import App from 'layouts/App';
 
 // PAGE COMPONENTS
-import TaskList from './components/TaskList';
-import Calendar from './components/Calendar';
-import Week from './components/Week';
+import TaskList from 'components/TaskList';
+import Week from 'components/Week';
+import CalendarButton from 'components/CalendarButton';
 
 // TYPES
 import NextPageWithLayout from 'interfaces/NextPageWIthLayout';
 
-// COMPONENTS
-import ActionGroup from 'components/ActionGroup';
+// UI COMPONENTS
+import IconButton from 'library/IconButton';
+
+// ICONS
+import CompletedIcon from '@mui/icons-material/LibraryAddCheckRounded';
+import WeekIcon from '@mui/icons-material/ViewWeekRounded';
+import StarIcon from '@mui/icons-material/StarRounded';
+
+// INTERFACES
+import Task from 'interfaces/Task';
+
+// DATABASE
+import data from 'database/tasks';
 
 // STYLES
 import styles from './Schedule.module.scss';
+import FilterButton from 'components/FilterButton';
+import SortButton from 'components/SortButton';
 
 const Schedule: NextPageWithLayout = () => {
-    const [subpage, setSubpage] = useState(0);
+    const [tasks, setTasks] = useState<Task[]>(data);
+    const [weekMode, setWeekMode] = useState(false);
+    const [disableCalendar, setDisableCalendar] = useState(false);
+    const [showCompletedTasks, setShowCompletedTasks] = useState(false);
+    const [onlyPriority, setOnlyPriority] = useState(false);
 
     return (
         <div className={styles.page}>
             <div className={styles.widgets}>
-                <div className={styles.format}>F</div>
-                <ActionGroup className={styles.daypicker}>
-                    <button className={subpage === 0 ? styles.selected : ''} onClick={() => setSubpage(0)}>
-                        T
-                    </button>
-                    <button className={subpage === 1 ? styles.selected : ''} onClick={() => setSubpage(1)}>
-                        C
-                    </button>
-                    <button className={subpage === 2 ? styles.selected : ''} onClick={() => setSubpage(2)}>
-                        W
-                    </button>
-                </ActionGroup>
-                <div className={styles.filter}>F</div>
+                <div className={styles.controls}>
+                    <IconButton
+                        className={`${styles.week} ${weekMode ? styles.active : styles.inactive}`}
+                        icon={<WeekIcon />}
+                        onClick={() => setWeekMode(weekMode ? false : true)}
+                        disabled={disableCalendar}
+                    />
+                    <CalendarButton disabled={weekMode} />
+                </div>
+                <div className={styles.controls}>
+                    <IconButton
+                        className={`${styles.prioritized} ${onlyPriority ? styles.active : styles.inactive}`}
+                        icon={<StarIcon />}
+                    />
+                    <IconButton
+                        className={`${styles.completed} ${onlyPriority ? styles.active : styles.inactive}`}
+                        icon={<CompletedIcon />}
+                        disabled={weekMode}
+                        onChange={state => setDisableCalendar(state)}
+                    />
+                    <SortButton weekMode={weekMode} />
+                    <FilterButton weekMode={weekMode} />
+                </div>
             </div>
-            {subpage === 0 && <TaskList className={styles.tasklist} />}
-            {subpage === 1 && <Calendar className={styles.calendar} />}
-            {subpage === 2 && <Week className={styles.week} />}
+            {!weekMode && <TaskList className={styles.tasklist} tasks={tasks} />}
+            {weekMode && <Week className={styles.week} />}
         </div>
     );
 };

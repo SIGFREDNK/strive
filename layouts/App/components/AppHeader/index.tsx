@@ -8,7 +8,7 @@ type Props = {
 };
 
 // COMPONENTS
-import Header from 'components/Header';
+import Header from 'library/Header';
 
 // STYLES
 import styles from './AppHeader.module.scss';

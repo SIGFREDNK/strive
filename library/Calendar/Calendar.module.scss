@@ -1,0 +1,107 @@
+.calendar {
+    background-color: #fff;
+    padding: 1.25rem;
+    width: max-content;
+    height: max-content;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 0.625rem;
+
+        .monthWrapper {
+            display: flex;
+            align-items: center;
+
+            button {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .month {
+                margin: 0 0.5rem;
+                cursor: pointer;
+            }
+        }
+
+        .yearWrapper {
+            display: flex;
+            align-items: center;
+
+            button {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .year {
+                margin: 0 0.5rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .content {
+        padding: 0.625rem;
+
+        .week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.125rem;
+            height: 3rem;
+            font-weight: 600;
+
+            li {
+                display: grid;
+                place-items: center;
+            }
+        }
+
+        .dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.125rem;
+
+            .date {
+                width: 2.1rem;
+                height: 2.1rem;
+                margin: 0.45rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.313rem;
+                cursor: pointer;
+                animation: to-top 1s forwards;
+
+                &.isCurrentMonth {
+                    color: #000;
+                }
+
+                &.isDifferentMonth {
+                    color: rgb(172, 172, 172);
+                }
+
+                &.isToday {
+                    color: mediumslateblue;
+                }
+
+                &.selected {
+                    background-color: #000;
+                    border-radius: 50%;
+                    color: #fff;
+                }
+
+                &.selected.isToday {
+                    background-color: mediumslateblue;
+                }
+            }
+        }
+    }
+}

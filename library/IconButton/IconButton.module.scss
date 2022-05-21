@@ -1,0 +1,14 @@
+.button {
+    border-radius: 0.3rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.075);
+
+    svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}

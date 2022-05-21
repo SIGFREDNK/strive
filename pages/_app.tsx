@@ -2,7 +2,7 @@
 import AppPropsWithLayout from 'interfaces/AppPropsWithLayout';
 
 // GLOBAL STYLES
-import 'globals.scss';
+import 'styles/globals.scss';
 
 // FRAMER MOTION
 import { AnimatePresence } from 'framer-motion';

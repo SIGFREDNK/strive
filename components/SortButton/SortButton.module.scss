@@ -1,0 +1,31 @@
+.wrapper {
+    position: relative;
+
+    & .menu {
+        position: absolute;
+        top: 2.5rem;
+        right: 0;
+        z-index: 3;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        border-radius: 0.2rem;
+
+        .group .button {
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.3rem;
+        }
+
+        .group .button[selected-state='true'] {
+            background-color: mediumslateblue;
+            color: #fff;
+        }
+    }
+    & .sort {
+        background-color: white;
+        color: black;
+
+        &.active {
+            background-color: mediumslateblue;
+            color: #fff;
+        }
+    }
+}
