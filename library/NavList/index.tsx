@@ -1,5 +1,5 @@
 // REACT
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 // STYLES
 import styles from './Navlist.module.scss';

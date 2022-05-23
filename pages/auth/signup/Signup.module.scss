@@ -29,14 +29,17 @@
     font-weight: 600;
 }
 
-.input {
+.signup .input {
     width: 100vw;
     max-width: 34rem;
     padding: 0 2rem;
-    background-color: #fff;
 
     & input {
         box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-        background-color: #fff;
+        background-color: #e7f0fe;
+        outline: none;
+    }
+    & input::placeholder {
+        color: #a9a9a9;
     }
 }

@@ -1,21 +1,22 @@
 // NEXT
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-
-// NEXT
 import Link from 'next/link';
 
 // REACT
 import { useState } from 'react';
 
-// COMPONENTS
+// UI COMPONENTS
 import Input from 'library/Input';
+
+// CONSTANTS
+import ROUTES from 'constants/routes';
 
 // TEMPLATES
 import Auth from 'layouts/Auth';
 
 // API
-import { login } from 'helpers/api';
+import { entry } from 'helpers/api';
 
 // STYLES
 import styles from './Signup.module.scss';
@@ -23,17 +24,25 @@ import styles from './Signup.module.scss';
 const Login: NextPage = () => {
     const [firstname, setFirstname] = useState('');
     const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
+    const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
-    const [repetition, setRepetition] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [passwordRepeat, setPasswordRepeat] = useState('');
+    const [phone, setPhone] = useState('');
     const router = useRouter();
+
+    const handleSubmit = () => {
+        const response: any = entry(ROUTES.signup, { firstname, surname, mail, password, passwordRepeat, phone });
+
+        if (response.status === 'failed') return console.log(response.message);
+
+        router.push('/app/home');
+    };
 
     return (
         <Auth
             title="Welcome"
             subtitle="Use the form to create an account"
-            onSubmit={() => login(email, password, router)}
+            onSubmit={handleSubmit}
             primary="Signup"
             secondary="Login"
             pageTitle="Signup"
@@ -63,7 +72,7 @@ const Login: NextPage = () => {
                 label="E-mail"
                 placeholder="E-mail..."
                 name="email"
-                onChange={event => setEmail(event.target.value)}
+                onChange={event => setMail(event.target.value)}
                 required
                 className={styles.input}
             />
@@ -72,7 +81,7 @@ const Login: NextPage = () => {
                 label="Phone number"
                 placeholder="Phone number..."
                 type="text"
-                onChange={event => setPhoneNumber(event.target.value)}
+                onChange={event => setPhone(event.target.value)}
                 required
                 className={styles.input}
             />
@@ -92,7 +101,7 @@ const Login: NextPage = () => {
                 placeholder="Repeat password..."
                 type="password"
                 toggleVisibility={true}
-                onChange={event => setRepetition(event.target.value)}
+                onChange={event => setPasswordRepeat(event.target.value)}
                 required
                 className={styles.input}
             />

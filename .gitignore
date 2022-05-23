@@ -25,6 +25,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
@@ -45,3 +46,8 @@ yarn-error.log*
 
 # git
 .gitignore
+
+# pwa
+**/public/workbox-*.js
+**/public/sw.js
+**/public/worker-*.js

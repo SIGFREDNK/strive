@@ -1,9 +1,9 @@
 .page {
     & {
-        padding: 0 1rem;
+        padding: 0 1rem 6rem 1rem;
     }
 
-    .carousel {
+    .web {
         display: none;
         padding: 0rem 0 1rem 0;
     }
@@ -28,21 +28,16 @@
     }
 
     @media only screen and (min-width: 730px) {
-        .options {
+        .mobile {
             display: none;
         }
 
-        .carousel {
+        .web {
             display: flex;
         }
     }
 
     .stat {
-        flex-basis: 20rem;
-        flex-grow: 1;
-        flex-shrink: 1;
-        max-width: 22rem;
-        min-width: 18rem;
         scroll-snap-align: end;
     }
 }

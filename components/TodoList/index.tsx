@@ -2,22 +2,23 @@
 import React from 'react';
 
 // INTERFACES
-import TaskInterface from 'interfaces/Task';
+import TaskInterface from 'interfaces/Todo';
 
 // TYPES
 type Props = {
     className?: string;
     style?: React.CSSProperties;
     tasks: TaskInterface[];
+    update: (type: 'TASK' | 'HABIT' | 'SKILL' | 'LESSON', id: string) => void;
 };
 
 // COMPONENTS
-import Task from 'components/Task';
+import Task from 'components/Todo';
 
 // STYLES
-import styles from './TaskList.module.scss';
+import styles from './TodoList.module.scss';
 
-const TaskList: React.FC<Props> = ({ className, style, tasks }) => {
+const TodoList: React.FC<Props> = ({ className, style, tasks, update }) => {
     return (
         <div className={`${className} ${styles.tasklist}`} style={{ ...style }}>
             {tasks.map((task, index) => (
@@ -32,6 +33,7 @@ const TaskList: React.FC<Props> = ({ className, style, tasks }) => {
                             list={task.list && task.list}
                             deadline={task.deadline && task.deadline}
                             interval={task.interval && task.interval}
+                            update={update}
                         />
                     )}
                     {task.type === 'HABIT' && (
@@ -42,6 +44,7 @@ const TaskList: React.FC<Props> = ({ className, style, tasks }) => {
                             priority={task.priority}
                             streak={task.streak && task.streak}
                             interval={task.interval && task.interval}
+                            update={update}
                         />
                     )}
                     {task.type === 'SKILL' && (
@@ -53,6 +56,7 @@ const TaskList: React.FC<Props> = ({ className, style, tasks }) => {
                             session={task.session && task.session}
                             deadline={task.deadline && task.deadline}
                             interval={task.interval && task.interval}
+                            update={update}
                         />
                     )}
                     {task.type === 'LESSON' && (
@@ -64,6 +68,7 @@ const TaskList: React.FC<Props> = ({ className, style, tasks }) => {
                             lesson={task.lesson && task.lesson}
                             deadline={task.deadline && task.deadline}
                             skill={task.skill && task.skill}
+                            update={update}
                         />
                     )}
                 </div>
@@ -72,4 +77,4 @@ const TaskList: React.FC<Props> = ({ className, style, tasks }) => {
     );
 };
 
-export default TaskList;
+export default TodoList;

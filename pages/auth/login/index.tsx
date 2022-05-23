@@ -1,6 +1,6 @@
 // NEXT
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter, NextRouter } from 'next/router';
 import { NextPage } from 'next';
 
 // REACT
@@ -9,25 +9,36 @@ import { useState } from 'react';
 // COMPONENTS
 import Input from 'library/Input';
 
+// CONSTANTS
+import ROUTES from 'constants/routes';
+
 // LAYOUT
 import Auth from 'layouts/Auth';
 
 // HELPERS
-import { login } from 'helpers/api';
+import { entry } from 'helpers/api';
 
 // STYLES
 import styles from './Login.module.scss';
 
 const Login: NextPage = () => {
-    const [email, setEmail] = useState('');
+    const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
+    const router: NextRouter = useRouter();
+
+    const handleSubmit = () => {
+        const response: any = entry(ROUTES.login, { mail, password });
+
+        if (response.status === 'failed') return console.log(response.message);
+
+        router.push('/app/home');
+    };
 
     return (
         <Auth
             title="Welcome back"
             subtitle="Please use the form to login"
-            onSubmit={() => login(email, password, router)}
+            onSubmit={handleSubmit}
             primary="Login"
             secondary="Signup"
             pageTitle="Login"
@@ -39,7 +50,7 @@ const Login: NextPage = () => {
                 label="E-mail"
                 placeholder="E-mail..."
                 name="email"
-                onChange={event => setEmail(event.target.value)}
+                onChange={event => setMail(event.target.value)}
                 required
                 className={styles.input}
             />

@@ -1,27 +1,15 @@
-import type { NextRouter } from 'next/router';
-
-const login: (email: string, password: string, router: NextRouter) => unknown = async (
-    email,
-    password,
-    router
-) => {
-    const userCredentials = { email, password };
-
-    const response = await fetch('http://localhost:4002/api/auth/login', {
+const entry: (route: string, args: object) => unknown = async (route, args) => {
+    console.log(args);
+    const response = await fetch(route, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(userCredentials),
+        body: JSON.stringify(args),
         credentials: 'include'
     });
 
-    const data = await response.json();
-
-    const errorMessage = document.querySelector('.error-message');
-    if (data.status === 'failed') return (errorMessage!.innerHTML = data.message);
-
-    router.push('/schedule');
+    return await response.json();
 };
 
-export { login };
+export { entry };

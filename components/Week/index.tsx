@@ -9,13 +9,13 @@ import Droppable from 'library/Droppable';
 import Draggable from 'library/Draggable';
 
 // COMPONENTS
-import Task from 'components/Task';
+import Todo from 'components/Todo';
 
 // TYPES
 interface Props {
     className?: string;
     style?: React.CSSProperties;
-};
+}
 
 // STYLES
 import styles from './Week.module.scss';
@@ -86,7 +86,7 @@ const Week: React.FC<Props> = ({ className, style }) => {
                     <h4>Monday</h4>
                     <Droppable className="swiper-disabled">
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="TASK"
                                 project="Strive"
                                 list="Frontend"
@@ -94,28 +94,38 @@ const Week: React.FC<Props> = ({ className, style }) => {
                                 name="Kalender"
                                 description="Design brugerflade til kalender"
                                 priority={true}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task type="HABIT" name="Læsning" streak={2} interval="Daily" description="Bliv klogere" />
+                            <Todo
+                                type="HABIT"
+                                name="Læsning"
+                                streak={2}
+                                interval="Daily"
+                                description="Bliv klogere"
+                                update={() => null}
+                            />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="SKILL"
                                 name="Programmering"
                                 interval="Thursdays"
                                 description="Lær at programmere"
                                 session={4}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="LESSON"
                                 name="Next JS API"
                                 skill="Programmering"
                                 lesson={2}
                                 deadline={new Date()}
                                 description="Målet er at være i stand til at lave Strive-appens backend"
+                                update={() => null}
                             />
                         </Draggable>
                     </Droppable>
@@ -124,7 +134,7 @@ const Week: React.FC<Props> = ({ className, style }) => {
                     <h4>Tuesday</h4>
                     <Droppable className="swiper-disabled">
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="TASK"
                                 project="Strive"
                                 list="Frontend"
@@ -132,28 +142,38 @@ const Week: React.FC<Props> = ({ className, style }) => {
                                 name="Kalender"
                                 description="Design brugerflade til kalender"
                                 priority={true}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task type="HABIT" name="Læsning" streak={2} interval="Daily" description="Bliv klogere" />
+                            <Todo
+                                type="HABIT"
+                                name="Læsning"
+                                streak={2}
+                                interval="Daily"
+                                description="Bliv klogere"
+                                update={() => null}
+                            />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="SKILL"
                                 name="Programmering"
                                 interval="Thursdays"
                                 description="Lær at programmere"
                                 session={4}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="LESSON"
                                 name="Next JS API"
                                 skill="Programmering"
                                 lesson={2}
                                 deadline={new Date()}
                                 description="Målet er at være i stand til at lave Strive-appens backend"
+                                update={() => null}
                             />
                         </Draggable>
                     </Droppable>
@@ -162,7 +182,7 @@ const Week: React.FC<Props> = ({ className, style }) => {
                     <h4>Wednesday</h4>
                     <Droppable className="swiper-disabled">
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="TASK"
                                 project="Strive"
                                 list="Frontend"
@@ -170,28 +190,38 @@ const Week: React.FC<Props> = ({ className, style }) => {
                                 name="Kalender"
                                 description="Design brugerflade til kalender"
                                 priority={true}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task type="HABIT" name="Læsning" streak={2} interval="Daily" description="Bliv klogere" />
+                            <Todo
+                                type="HABIT"
+                                name="Læsning"
+                                streak={2}
+                                interval="Daily"
+                                description="Bliv klogere"
+                                update={() => null}
+                            />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="SKILL"
                                 name="Programmering"
                                 interval="Thursdays"
                                 description="Lær at programmere"
                                 session={4}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="LESSON"
                                 name="Next JS API"
                                 skill="Programmering"
                                 lesson={2}
                                 deadline={new Date()}
                                 description="Målet er at være i stand til at lave Strive-appens backend"
+                                update={() => null}
                             />
                         </Draggable>
                     </Droppable>
@@ -200,7 +230,7 @@ const Week: React.FC<Props> = ({ className, style }) => {
                     <h4>Thursday</h4>
                     <Droppable className="swiper-disabled">
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="TASK"
                                 project="Strive"
                                 list="Frontend"
@@ -208,28 +238,38 @@ const Week: React.FC<Props> = ({ className, style }) => {
                                 name="Kalender"
                                 description="Design brugerflade til kalender"
                                 priority={true}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task type="HABIT" name="Læsning" streak={2} interval="Daily" description="Bliv klogere" />
+                            <Todo
+                                type="HABIT"
+                                name="Læsning"
+                                streak={2}
+                                interval="Daily"
+                                description="Bliv klogere"
+                                update={() => null}
+                            />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="SKILL"
                                 name="Programmering"
                                 interval="Thursdays"
                                 description="Lær at programmere"
                                 session={4}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="LESSON"
                                 name="Next JS API"
                                 skill="Programmering"
                                 lesson={2}
                                 deadline={new Date()}
                                 description="Målet er at være i stand til at lave Strive-appens backend"
+                                update={() => null}
                             />
                         </Draggable>
                     </Droppable>
@@ -238,7 +278,7 @@ const Week: React.FC<Props> = ({ className, style }) => {
                     <h4>Friday</h4>
                     <Droppable className="swiper-disabled">
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="TASK"
                                 project="Strive"
                                 list="Frontend"
@@ -246,28 +286,38 @@ const Week: React.FC<Props> = ({ className, style }) => {
                                 name="Kalender"
                                 description="Design brugerflade til kalender"
                                 priority={true}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task type="HABIT" name="Læsning" streak={2} interval="Daily" description="Bliv klogere" />
+                            <Todo
+                                type="HABIT"
+                                name="Læsning"
+                                streak={2}
+                                interval="Daily"
+                                description="Bliv klogere"
+                                update={() => null}
+                            />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="SKILL"
                                 name="Programmering"
                                 interval="Thursdays"
                                 description="Lær at programmere"
                                 session={4}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="LESSON"
                                 name="Next JS API"
                                 skill="Programmering"
                                 lesson={2}
                                 deadline={new Date()}
                                 description="Målet er at være i stand til at lave Strive-appens backend"
+                                update={() => null}
                             />
                         </Draggable>
                     </Droppable>
@@ -276,7 +326,7 @@ const Week: React.FC<Props> = ({ className, style }) => {
                     <h4>Saturday</h4>
                     <Droppable className="swiper-disabled">
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="TASK"
                                 project="Strive"
                                 list="Frontend"
@@ -284,28 +334,38 @@ const Week: React.FC<Props> = ({ className, style }) => {
                                 name="Kalender"
                                 description="Design brugerflade til kalender"
                                 priority={true}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task type="HABIT" name="Læsning" streak={2} interval="Daily" description="Bliv klogere" />
+                            <Todo
+                                type="HABIT"
+                                name="Læsning"
+                                streak={2}
+                                interval="Daily"
+                                description="Bliv klogere"
+                                update={() => null}
+                            />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="SKILL"
                                 name="Programmering"
                                 interval="Thursdays"
                                 description="Lær at programmere"
                                 session={4}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="LESSON"
                                 name="Next JS API"
                                 skill="Programmering"
                                 lesson={2}
                                 deadline={new Date()}
                                 description="Målet er at være i stand til at lave Strive-appens backend"
+                                update={() => null}
                             />
                         </Draggable>
                     </Droppable>
@@ -314,7 +374,7 @@ const Week: React.FC<Props> = ({ className, style }) => {
                     <h4>Sunday</h4>
                     <Droppable className="swiper-disabled">
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="TASK"
                                 project="Strive"
                                 list="Frontend"
@@ -322,28 +382,38 @@ const Week: React.FC<Props> = ({ className, style }) => {
                                 name="Kalender"
                                 description="Design brugerflade til kalender"
                                 priority={true}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task type="HABIT" name="Læsning" streak={2} interval="Daily" description="Bliv klogere" />
+                            <Todo
+                                type="HABIT"
+                                name="Læsning"
+                                streak={2}
+                                interval="Daily"
+                                description="Bliv klogere"
+                                update={() => null}
+                            />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="SKILL"
                                 name="Programmering"
                                 interval="Thursdays"
                                 description="Lær at programmere"
                                 session={4}
+                                update={() => null}
                             />
                         </Draggable>
                         <Draggable className="swiper-disabled">
-                            <Task
+                            <Todo
                                 type="LESSON"
                                 name="Next JS API"
                                 skill="Programmering"
                                 lesson={2}
                                 deadline={new Date()}
                                 description="Målet er at være i stand til at lave Strive-appens backend"
+                                update={() => null}
                             />
                         </Draggable>
                     </Droppable>

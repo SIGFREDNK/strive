@@ -2,7 +2,7 @@
 import React, { ChangeEvent, useState } from 'react';
 
 // TYPES
-import InputType from 'interfaces/InputType';
+import InputType from './InputType';
 
 interface CommonProps {
     children?: React.ReactNode;

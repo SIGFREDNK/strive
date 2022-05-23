@@ -52,7 +52,12 @@ const AppNavigation: React.FC<Props> = ({ open, setOpen, selected }) => {
 
     return (
         <Navigation open={open}>
-            <Profile name="Sigfred Knudsen" tag="#SigfredFNK" onClick={() => setOpen(open ? false : true)} />
+            <Profile
+                name="Sigfred Knudsen"
+                tag="#SigfredFNK"
+                onArrowClick={() => setOpen(open ? false : true)}
+                onProfileClick={() => null}
+            />
             <NavList title="Menu">
                 <NavItem
                     icon={<HomeIcon />}

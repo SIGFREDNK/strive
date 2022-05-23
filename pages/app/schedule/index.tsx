@@ -5,7 +5,7 @@ import { useState } from 'react';
 import App from 'layouts/App';
 
 // PAGE COMPONENTS
-import TaskList from 'components/TaskList';
+import TodoList from 'components/TodoList';
 import Week from 'components/Week';
 import CalendarButton from 'components/CalendarButton';
 
@@ -21,7 +21,7 @@ import WeekIcon from '@mui/icons-material/ViewWeekRounded';
 import StarIcon from '@mui/icons-material/StarRounded';
 
 // INTERFACES
-import Task from 'interfaces/Task';
+import Todo from 'interfaces/Todo';
 
 // DATABASE
 import data from 'database/tasks';
@@ -32,11 +32,13 @@ import FilterButton from 'components/FilterButton';
 import SortButton from 'components/SortButton';
 
 const Schedule: NextPageWithLayout = () => {
-    const [tasks, setTasks] = useState<Task[]>(data);
+    const [tasks, setTasks] = useState<Todo[]>(data);
     const [weekMode, setWeekMode] = useState(false);
     const [disableCalendar, setDisableCalendar] = useState(false);
     const [showCompletedTasks, setShowCompletedTasks] = useState(false);
     const [onlyPriority, setOnlyPriority] = useState(false);
+
+    const update = () => {};
 
     return (
         <div className={styles.page}>
@@ -65,7 +67,7 @@ const Schedule: NextPageWithLayout = () => {
                     <FilterButton weekMode={weekMode} />
                 </div>
             </div>
-            {!weekMode && <TaskList className={styles.tasklist} tasks={tasks} />}
+            {!weekMode && <TodoList className={styles.tasklist} tasks={tasks} update={update} />}
             {weekMode && <Week className={styles.week} />}
         </div>
     );

@@ -28,119 +28,123 @@ import styles from './Home.module.scss';
 const Home: NextPageWithLayout = () => {
     return (
         <div className={styles.page}>
-            <div className={styles.options}>
-                <Button
-                    text="Projects"
-                    startIcon={<ProjectsIcon />}
-                    endIcon={<ArrowIcon className={styles.end} />}
-                    size="medium"
-                    type="link"
-                    path="/app/projects"
-                    className={styles.option}
-                />
-                <Button
-                    text="Lists"
-                    startIcon={<ListsIcon />}
-                    endIcon={<ArrowIcon className={styles.end} />}
-                    size="medium"
-                    type="link"
-                    path="/app/projects"
-                    className={styles.option}
-                />
-                <Button
-                    text="Habits"
-                    startIcon={<HabitsIcon />}
-                    endIcon={<ArrowIcon className={styles.end} />}
-                    size="medium"
-                    type="link"
-                    path="/app/projects"
-                    className={styles.option}
-                />
-                <Button
-                    text="Skills"
-                    startIcon={<SkillsIcon />}
-                    endIcon={<ArrowIcon className={styles.end} />}
-                    size="medium"
-                    type="link"
-                    path="/app/projects"
-                    className={styles.option}
-                />
-                <Button
-                    text="Teams"
-                    startIcon={<TeamsIcon />}
-                    endIcon={<ArrowIcon className={styles.end} />}
-                    size="medium"
-                    type="link"
-                    path="/app/projects"
-                    className={styles.option}
-                />
-                <Button
-                    text="Stats"
-                    startIcon={<StatsIcon />}
-                    endIcon={<ArrowIcon className={styles.end} />}
-                    size="medium"
-                    type="link"
-                    path="/app/stats"
-                    className={styles.option}
-                />
+            <div className={styles.mobile}>
+                <div className={styles.options}>
+                    <Button
+                        text="Projects"
+                        startIcon={<ProjectsIcon />}
+                        endIcon={<ArrowIcon className={styles.end} />}
+                        size="medium"
+                        type="link"
+                        path="/app/projects"
+                        className={styles.option}
+                    />
+                    <Button
+                        text="Lists"
+                        startIcon={<ListsIcon />}
+                        endIcon={<ArrowIcon className={styles.end} />}
+                        size="medium"
+                        type="link"
+                        path="/app/projects"
+                        className={styles.option}
+                    />
+                    <Button
+                        text="Habits"
+                        startIcon={<HabitsIcon />}
+                        endIcon={<ArrowIcon className={styles.end} />}
+                        size="medium"
+                        type="link"
+                        path="/app/projects"
+                        className={styles.option}
+                    />
+                    <Button
+                        text="Skills"
+                        startIcon={<SkillsIcon />}
+                        endIcon={<ArrowIcon className={styles.end} />}
+                        size="medium"
+                        type="link"
+                        path="/app/projects"
+                        className={styles.option}
+                    />
+                    <Button
+                        text="Teams"
+                        startIcon={<TeamsIcon />}
+                        endIcon={<ArrowIcon className={styles.end} />}
+                        size="medium"
+                        type="link"
+                        path="/app/projects"
+                        className={styles.option}
+                    />
+                    <Button
+                        text="Stats"
+                        startIcon={<StatsIcon />}
+                        endIcon={<ArrowIcon className={styles.end} />}
+                        size="medium"
+                        type="link"
+                        path="/app/stats"
+                        className={styles.option}
+                    />
+                </div>
             </div>
-            <Carousel className={styles.carousel}>
-                <Stat
-                    title="Tasks Completed"
-                    value={4}
-                    actionType="link"
-                    path="/app/stats/tasks"
-                    banner={true}
-                    actionTitle="View all"
-                    icon={<TaskIcon />}
-                    growth="+8"
-                    className={styles.stat}
-                />
-                <Stat
-                    title="Projects Completed"
-                    value={4}
-                    actionType="link"
-                    path="/app/stats/tasks"
-                    banner={true}
-                    actionTitle="View all"
-                    icon={<ProjectsIcon />}
-                    growth="+8"
-                    className={styles.stat}
-                />
-                <Stat
-                    title="Habits Completed"
-                    value={4}
-                    actionType="link"
-                    path="/app/stats/tasks"
-                    banner={true}
-                    actionTitle="View all"
-                    icon={<HabitsIcon />}
-                    growth="+8"
-                    className={styles.stat}
-                />
-                <Stat
-                    title="Diary Entries"
-                    value={4}
-                    actionType="link"
-                    path="/app/stats/tasks"
-                    banner={true}
-                    actionTitle="View all"
-                    icon={<DiaryIcon />}
-                    growth="+8"
-                    className={styles.stat}
-                />
-                <Stat
-                    title="Skills Trained"
-                    value={4}
-                    actionType="link"
-                    path="/app/stats/tasks"
-                    banner={true}
-                    actionTitle="View all"
-                    icon={<SkillsIcon />}
-                    growth="+8"
-                    className={styles.stat}
-                />
-            </Carousel>
+            <div className={styles.web}>
+                <Carousel className={styles.carousel}>
+                    <Stat
+                        title="Tasks Completed"
+                        value={4}
+                        actionType="link"
+                        path="/app/stats/tasks"
+                        banner={true}
+                        actionTitle="View all"
+                        icon={<TaskIcon />}
+                        growth="+8"
+                        className={styles.stat}
+                    />
+                    <Stat
+                        title="Projects Completed"
+                        value={4}
+                        actionType="link"
+                        path="/app/stats/tasks"
+                        banner={true}
+                        actionTitle="View all"
+                        icon={<ProjectsIcon />}
+                        growth="+8"
+                        className={styles.stat}
+                    />
+                    <Stat
+                        title="Habits Completed"
+                        value={4}
+                        actionType="link"
+                        path="/app/stats/tasks"
+                        banner={true}
+                        actionTitle="View all"
+                        icon={<HabitsIcon />}
+                        growth="+8"
+                        className={styles.stat}
+                    />
+                    <Stat
+                        title="Diary Entries"
+                        value={4}
+                        actionType="link"
+                        path="/app/stats/tasks"
+                        banner={true}
+                        actionTitle="View all"
+                        icon={<DiaryIcon />}
+                        growth="+8"
+                        className={styles.stat}
+                    />
+                    <Stat
+                        title="Skills Trained"
+                        value={4}
+                        actionType="link"
+                        path="/app/stats/tasks"
+                        banner={true}
+                        actionTitle="View all"
+                        icon={<SkillsIcon />}
+                        growth="+8"
+                        className={styles.stat}
+                    />
+                </Carousel>
+            </div>
         </div>
     );
 };

@@ -1,40 +1,18 @@
-export interface Habit {
-    type: 'HABIT';
-    streak?: number;
-    interval: string;
-}
+// TYPES
+import { ObjectId } from 'mongoose';
+import Interval from './Interval';
 
-export interface Task {
-    type: 'TASK';
-    deadline?: Date | null;
-    list?: string;
-    project?: string;
-    interval?: string;
-}
-
-export interface Lesson {
-    type: 'LESSON';
-    lesson?: number;
-    deadline?: Date | null;
-    skill: string;
-}
-
-export interface Skill {
-    type: 'SKILL';
-    deadline?: Date | null;
-    interval?: string;
-    session?: number;
-}
-
-export type DefaultProps = {
-    className?: string;
-    style?: React.CSSProperties;
+export default interface Task {
+    id: ObjectId;
     name: string;
-    type: 'HABIT' | 'TASK' | 'LESSON' | 'SKILL';
-    description?: string;
-    priority?: boolean;
-};
-
-type Props = (DefaultProps & Habit) | (DefaultProps & Task) | (DefaultProps & Lesson) | (DefaultProps & Skill);
-
-export default Props;
+    description: string;
+    priority: boolean;
+    deadline: Date | undefined | null;
+    date: Date | undefined | null;
+    list: string | undefined | null;
+    project: string | undefined | null;
+    interval: Interval | null | undefined;
+    owner: ObjectId;
+    collaborators: ObjectId[] | null | undefined;
+    teams: ObjectId[] | null | undefined;
+}

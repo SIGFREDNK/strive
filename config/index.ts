@@ -1,5 +1,5 @@
 // INTERFACES
-import NavItem from 'interfaces/NavItem';
+import NavItem from 'library/NavItem/NavItem';
 
 // CONFIGURATIONS
 export const navItems: NavItem[] = [

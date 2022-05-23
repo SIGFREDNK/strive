@@ -5,7 +5,8 @@ import React, { useRef, useEffect, useState, useContext } from 'react';
 type Props = {
     name: string;
     tag: string;
-    onClick?: () => void;
+    onArrowClick?: () => any;
+    onProfileClick?: () => any;
 };
 
 // ICONS
@@ -17,7 +18,7 @@ import { OpenContext } from 'library/Navigation';
 // STYLES
 import styles from './Profile.module.scss';
 
-const Profile: React.FC<Props> = ({ name, tag, onClick }) => {
+const Profile: React.FC<Props> = ({ name, tag, onArrowClick, onProfileClick }) => {
     const icon = useRef<HTMLDivElement>(null);
     const [initials, setInitials] = useState('');
 
@@ -39,13 +40,13 @@ const Profile: React.FC<Props> = ({ name, tag, onClick }) => {
     }, [name]); // eslint-disable-line
 
     return (
-        <div className={`${styles.profile} ${open ? styles.open : styles.closed}`}>
+        <div className={`${styles.profile} ${open ? styles.open : styles.closed}`} onClick={onProfileClick}>
             <div className={styles.icon} ref={icon} data-initials={initials}></div>
             <div className={styles.info}>
                 <h4 className={styles.name}>{name}</h4>
                 <span className={styles.tag}>{tag}</span>
             </div>
-            <div className={styles.arrow} onClick={onClick}>
+            <div className={styles.arrow} onClick={onArrowClick}>
                 <ArrowIcon />
             </div>
         </div>
@@ -53,7 +54,8 @@ const Profile: React.FC<Props> = ({ name, tag, onClick }) => {
 };
 
 Profile.defaultProps = {
-    onClick: () => null
+    onArrowClick: () => null,
+    onProfileClick: () => null
 };
 
 export default Profile;

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 // TYPES
-import Props from 'interfaces/Task';
+import Props from 'interfaces/Todo';
 
 // ICONS
 import ProjectsIcon from '@mui/icons-material/FolderRounded';
@@ -19,14 +19,16 @@ import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 
 // STYLES
-import styles from './Task.module.scss';
+import styles from './Todo.module.scss';
 
-const Task: React.FC<Props> = props => {
+const Todo: React.FC<Props> = props => {
     const [isPriority, setIsPriority] = useState(props.priority);
     const [isToday, setIsToday] = useState(false);
 
+    const complete = () => {};
+
     return (
-        <div className={`${props.className} ${styles.task}`} style={{ ...props.style }}>
+        <div className={`${props.className} ${styles.task}`} style={{ ...props.style }} onClick={() => complete}>
             <div className={styles.top}>
                 <motion.button
                     className={`${styles.priority} ${
@@ -98,11 +100,11 @@ const Task: React.FC<Props> = props => {
     );
 };
 
-Task.defaultProps = {
+Todo.defaultProps = {
     streak: 0,
     description: '',
     priority: false,
     deadline: null
 };
 
-export default Task;
+export default Todo;
